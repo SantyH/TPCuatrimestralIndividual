@@ -20,3 +20,4 @@ void checkAvailableMovie(char movieTitle[]);
 void addMovie(Movie* movie);
 void freeMovieCard(MovieCard* movieCard);
 #endif //TPCUATRIMESTRALINDIVIDUAL_MOVIECARD_H
+

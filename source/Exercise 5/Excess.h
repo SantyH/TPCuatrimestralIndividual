@@ -15,6 +15,7 @@ typedef struct Excess{
     char* date;
 }Excess;
 
+
 Excess* createExcess();
 void determinateUnreturnMovies(MovieClub* movieClub);
 void registerIncome(MovieClub* movieClub);

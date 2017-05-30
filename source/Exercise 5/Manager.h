@@ -15,6 +15,7 @@ typedef struct Manager{
     int DNI;
 }Manager;
 
+
 Manager* createManager(char name[],char surName[], int DNI);
 Client* registerClient();
 Excess* generateExcess();

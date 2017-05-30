@@ -19,4 +19,5 @@ void giveMovieCard(MovieCard* movieCard);
 void returnMovie(char movieTitle[]);
 void freeClient(Client* client);
 
+
 #endif //TPCUATRIMESTRALINDIVIDUAL_CLIENT_H

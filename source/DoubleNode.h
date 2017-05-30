@@ -22,3 +22,4 @@ DoubleNode* createDoubleNode(int element, DoubleNode* left, DoubleNode* right);
 void freeDoubleNode(DoubleNode* node);
 
 #endif //STRUCTURES_DOUBLENODE_H
+

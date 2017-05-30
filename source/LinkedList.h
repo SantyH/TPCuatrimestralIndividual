@@ -39,3 +39,4 @@ void addBefore(LinkedList* list, int toAdd);
 int removeS(LinkedList* list);
 
 #endif //STRUCTURES_LINKEDLIST_H
+

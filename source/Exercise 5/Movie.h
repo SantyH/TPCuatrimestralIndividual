@@ -18,3 +18,4 @@ void rentMovie(Movie* movie);
 boolean isAvailable(Movie* movie);
 void freeMovie(Movie* movie);
 #endif //TPCUATRIMESTRALINDIVIDUAL_MOVIE_H
+

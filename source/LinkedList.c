@@ -265,3 +265,4 @@ int removeS(LinkedList* list){
         else list->current = before;
     }
 }
+
