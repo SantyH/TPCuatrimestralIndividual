@@ -5,9 +5,10 @@
 #include "DoubleNode.h"
 #include <stdlib.h>
 
-DoubleNode* createDoubleNode(int element, DoubleNode* left, DoubleNode* right){
+DoubleNode* createDoubleNode(void* element, size_t typeSize, DoubleNode* left, DoubleNode* right){
 
     DoubleNode* node = malloc(sizeof(DoubleNode));
+     = malloc(sizeof(typeSize));
     node->element = element;
     node->left = left;
     node->right = right;

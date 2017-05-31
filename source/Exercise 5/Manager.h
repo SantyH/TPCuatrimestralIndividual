@@ -10,17 +10,17 @@
 #include "Excess.h"
 
 typedef struct Manager{
-    char name[];
-    char surName[];
+    char* name;
+    char* surname;
     int DNI;
 }Manager;
 
 
-Manager* createManager(char name[],char surName[], int DNI);
-Client* registerClient();
-Excess* generateExcess();
-void generateMovieCard(Client* client);
-void increaseAmountMovieCard(MovieCard* movieCard);
+Manager* createManager(char* name,char* surname, int DNI);
+Client* registerClient(MovieClub* movieClub, Client* client);
+Excess* generateExcess(MovieClub* movieClub);
+void generateMovieCard(Client* client, double amount);
+void increaseAmountMovieCard(MovieCard* movieCard, double amount);
 void freeManager(Manager* manager);
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_MANAGER_H
