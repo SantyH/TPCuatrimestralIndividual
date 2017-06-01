@@ -14,6 +14,8 @@ struct magazine{
 };
 
 Magazine* newMagazine();
+void unregisterMagazine();
+void changeMagazine();
 
 
 
