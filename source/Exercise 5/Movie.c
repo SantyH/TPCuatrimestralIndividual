@@ -8,23 +8,35 @@
 #include <stdio.h>
 #include "Movie.h"
 
-Movie* createMovie(char* title){
+Movie* createMovie(char* title, double price){
     Movie* result = malloc(sizeof(Movie));
-    result->title= title;
-    result->idMovieCard=0;
+    result->title = title;
+    result->idMovieCard = 0;
+    result->price = price;
+
+    time_t currentTime = time(NULL);
+    result->timeStamp=currentTime;
 }
-/**
- * EL precio de la pelicula lo deberia conocer el movieclub o la propia pelicula ????
- */
-void rentMovie(Movie* movie, MovieCard* movieCard){
-    if(movieCard->totalAmount)
-    movie->idMovieCard= movieCard->id;
+void changePrice(Movie *movie, double price){
+    movie->price = price;
+}
 
-    time_t calendarTime;
-    time(&calendarTime);
+void rentMovie(Movie* movie, Client* client) {
+    if (client->movieCard->totalAmount >= movie->price) {
 
-    movie->rentDate= malloc(sizeof(char*));
-    strcpy(movie->rentDate,ctime(&calendarTime));
+        client->movieCard->totalAmount -= movie->price;
+
+        movie->idMovieCard = client->movieCard->id;
+
+
+        time_t calendarTime;
+        time(&calendarTime);
+
+        movie->rentDate = malloc(sizeof(char*));
+        strcpy(movie->rentDate, ctime(&calendarTime));
+
+        addMovie(client,movie);
+    }
 }
 
 void isAvailable(Movie* movie){
@@ -33,8 +45,6 @@ void isAvailable(Movie* movie){
     }else{
         printf("%s", "Movie is NOT available!");
     }
-
-
 }
 
 void freeMovie(Movie* movie){

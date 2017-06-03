@@ -10,15 +10,13 @@
 
 typedef struct MovieCard{
     int id;
-    int totalAmount;
-    //decidir si un arreglo o una lista de peliculas.
-    LinkedList* movies;
+    double totalAmount;
 
 } MovieCard;
 
-MovieCard* createMovieCard(int id, int amount);
-void checkAvailableMovie(MovieCard* movieCard, char movieTitle[]);
-//void checkMoviePremiere(MovieCard* movieCard);
+MovieCard* createMovieCard(int id, double amount);
+void checkAvailableMovie(MovieClub* movieClub, char* movieTitle);
+void checkMoviePremiere(MovieClub* movieClub);
 void freeMovieCard(MovieCard* movieCard);
 #endif //TPCUATRIMESTRALINDIVIDUAL_MOVIECARD_H
 

@@ -6,18 +6,18 @@
 #define TPCUATRIMESTRALINDIVIDUAL_MOVIECLUB_H
 
 #include "../StaticList.h"
+#include "Manager.h"
 
 typedef struct MovieClub{
     StaticList* movies;
     StaticList* clients;
     StaticList* excesses;
     double income;
-    double amountRent;
+    Manager* manager;
 
 }MovieClub;
 
-MovieClub* createMovieClub(double amountRent);
-void changeAmountRent(MovieClub* movieClub, double amountRent);
-void freeMovieClub();
+MovieClub* createMovieClub(Manager* manager);
+void freeMovieClub(MovieClub* movieClub);
 #endif //TPCUATRIMESTRALINDIVIDUAL_MOVIECLUB_H
 

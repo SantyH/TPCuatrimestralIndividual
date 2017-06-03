@@ -8,11 +8,12 @@
 #include "MovieClub.h"
 
 typedef struct Excess{
-    // lista o arreglo de peliculas no de vueltas
+    int unreturnMovies;
     double amount;
     double income;
-    // lista o arreglo de clientes mas activos
+    StaticList* clientsPrimiere;
     char* date;
+    time_t timeStamp;
 }Excess;
 
 
