@@ -6,7 +6,6 @@
 #ifndef STRUCTURES_STATICLIST_H
 #define STRUCTURES_STATICLIST_H
 
-#include <cstddef>
 
 typedef struct staticList StaticList;
 
@@ -23,7 +22,7 @@ struct staticList{
 
 /* ~~~ Function Prototypes ~~~ */
 
-StaticList* createStaticList(int initialCapacity);
+StaticList* createStaticList(int initialCapacity, size_t typeSize);
 void freeStaticList(StaticList* list);
 int size(StaticList* list);
 int isEmpty(StaticList* list);

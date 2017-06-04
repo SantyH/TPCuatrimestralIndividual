@@ -13,7 +13,7 @@ typedef struct Excess{
     double income;
     StaticList* clientsPrimiere;
     char* date;
-    time_t timeStamp;
+    long timeStamp;
 }Excess;
 
 

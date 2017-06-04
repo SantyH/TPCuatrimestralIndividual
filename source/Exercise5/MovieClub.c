@@ -9,9 +9,9 @@ MovieClub* createMovieClub(Manager* manager){
 
     MovieClub* result = malloc(sizeof(MovieClub));
     result->income = 0;
-    result->movies = createStaticList(5);
-    result->clients = createStaticList(5);
-    result->excesses = createStaticList(5);
+    result->movies = createStaticList(5, sizeof(Movie));
+    result->clients = createStaticList(5, sizeof(Client));
+    result->excesses = createStaticList(5, sizeof(Excess));
     result->manager = manager;
 }
 

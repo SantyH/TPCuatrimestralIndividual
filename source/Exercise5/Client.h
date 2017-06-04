@@ -6,7 +6,7 @@
 #define TPCUATRIMESTRALINDIVIDUAL_CLIENT_H
 
 #include "MovieCard.h"
-#include "../StaticList.h"
+#include "../Structs/StaticList.h"
 #include "MovieClub.h"
 
 typedef struct Client{
@@ -20,7 +20,7 @@ typedef struct Client{
 Client* createClient(char* name, char* surname, int DNI);
 void giveMovieCard(Client* client, MovieCard* movieCard);
 void addMovie(Client* client, Movie* movie);
-void returnMovie(Client* client,MovieClub* movieClub,char* movieTitle);
+void returnMovie(Client* client, MovieClub* movieClub,char* movieTitle);
 void freeClient(Client* client);
 
 

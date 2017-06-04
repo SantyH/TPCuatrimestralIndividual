@@ -11,19 +11,22 @@ Manager* createManager(char* name,char* surname, int DNI){
     result->surname = surname;
     result->DNI = DNI;
 }
-Client* registerClient(MovieClub* movieClub, Client* client){
-    addNext(movieClub, client);
+void registerClient(MovieClub* movieClub, char* name, char* surname, int DNI){
+    addNext(movieClub, createClient(name,surname,DNI));
 }
-Excess* generateExcess(MovieClub* movieClub){
+void generateExcess(MovieClub* movieClub){
+    goBack(movieClub->excesses);
     addNext(movieClub->excesses, createExcess(movieClub));
 }
 
 void generateMovieCard(Client* client, double amount){
     giveMovieCard(client, createMovieCard(client->DNI,amount));
 }
+
 void increaseAmountMovieCard(MovieCard* movieCard, double amount){
     movieCard->totalAmount += amount;
 }
+
 void freeManager(Manager* manager){
     free(manager);
 }

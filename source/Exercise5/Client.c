@@ -14,9 +14,10 @@ Client* createClient(char* name, char* surname, int DNI){
     resultClient->surname = surname;
     resultClient->DNI = DNI;
     resultClient->movieCard = NULL;
-    resultClient->movies = createStaticList(5);
+    resultClient->movies = createStaticList(5, sizeof(Movie));
     return resultClient;
 }
+
 void giveMovieCard(Client* client, MovieCard* movieCard){
     client->movieCard=movieCard;
 }
@@ -36,6 +37,7 @@ void returnMovie(Client* client,MovieClub* movieClub, char* movieTitle){
     }
     printf("%s","You don't have this movie!");
 }
+
 void freeClient(Client* client){
     free(client->movieCard);
     free(client->movies);

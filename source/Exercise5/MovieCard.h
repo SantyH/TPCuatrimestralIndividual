@@ -6,7 +6,7 @@
 #define TPCUATRIMESTRALINDIVIDUAL_MOVIECARD_H
 
 #include "Movie.h"
-#include "../LinkedList.h"
+#include "MovieClub.h"
 
 typedef struct MovieCard{
     int id;

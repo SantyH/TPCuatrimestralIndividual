@@ -1,11 +1,11 @@
 //
-// Created by Lucas on 30/5/2017.
+// Created by Lucas on 4/6/2017.
 //
 
 #ifndef TPCUATRIMESTRALINDIVIDUAL_MOVIECLUB_H
 #define TPCUATRIMESTRALINDIVIDUAL_MOVIECLUB_H
 
-#include "../StaticList.h"
+#include "../Structs/StaticList.h"
 #include "Manager.h"
 
 typedef struct MovieClub{
@@ -19,5 +19,5 @@ typedef struct MovieClub{
 
 MovieClub* createMovieClub(Manager* manager);
 void freeMovieClub(MovieClub* movieClub);
-#endif //TPCUATRIMESTRALINDIVIDUAL_MOVIECLUB_H
 
+#endif //TPCUATRIMESTRALINDIVIDUAL_MOVIECLUB_H

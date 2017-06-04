@@ -26,7 +26,11 @@ void checkAvailableMovie(MovieClub* movieClub, char* movieTitle){
 }
 
 void checkMoviePremiere(MovieClub* movieClub){
-
+    for (int i = 0; i < movieClub->movies->size; ++i) {
+//        DateTime dateTime = Convert.ToDateTime(movies)
+//
+//        if()
+    }
 }
 void freeMovieCard(MovieCard* movieCard){
     free(movieCard);

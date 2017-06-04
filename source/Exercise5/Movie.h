@@ -14,12 +14,12 @@ typedef struct Movie{
     int idMovieCard;
     char* rentDate;
     char* devolutionDate;
-    time_t timeStamp;
+    long timeStamp;
 } Movie;
 
 Movie* createMovie(char* title, double price);
 void changePrice(Movie *movie, double price);
-void rentMovie(Movie* movie, Client* client);
+//void rentMovie(Movie* movie, Client* client);
 void isAvailable(Movie* movie);
 void freeMovie(Movie* movie);
 
