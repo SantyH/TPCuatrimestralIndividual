@@ -9,7 +9,7 @@
 #include "Excess.h"
 
 
-Excess* createExcess(MovieClub* movieClub){
+Excess* createExcess(){
     Excess* result = malloc(sizeof(Excess));
 
     time_t calendarTime;
@@ -25,24 +25,31 @@ Excess* createExcess(MovieClub* movieClub){
 //    result->income
 }
 void determinateUnreturnMovies(Excess* excess, MovieClub* movieClub){
-    for (int i = 0; i < movieClub->clients; ++i) {
+    for (int i = 0; i < (int) movieClub->clients; ++i) {
         goTo(movieClub->clients,i);
         excess->unreturnMovies += ((Client*) getActual(movieClub->clients))->movies->size;
     }
 }
-void registerIncome(Excess excess, MovieClub* movieClub){
+void registerIncome(Excess* excess, MovieClub* movieClub) {
     double partialAmount = 0;
-    for(int i = 0; i<movieClub->clients->size,i++){
-        goTo(movieClub->clients,i);
-        for (int j = 0; j < ((Client*) getActual(movieClub->clients))->movies->size; ++j) {
-            goTo(((Client*) getActual(movieClub->clients))->movies,j);
+    for (int i = 0; i < movieClub->clients->size; i++) {
+        goTo(movieClub->clients, i);
+        for (int j = 0; j < ((Client *) getActual(movieClub->clients))->movies->size; ++j) {
+            goTo(((Client *) getActual(movieClub->clients))->movies, j);
 //            if(strcmp(excess.date,
 //                    ((Movie*) getActual(((Client*) getActual(movieClub->clients))->movies)).)
-            if(excess.timeStamp)
+//            if(excess.timeStamp)
+//        }
+//        partialAmount +=
         }
-        partialAmount +=
     }
 }
 //determinateExcess
-void rewardClients(MovieClub* movieClub);
-void freeExcess(Excess* excess);
+void rewardClients(Excess* excess, MovieClub* movieClub){
+
+}
+void freeExcess(Excess* excess){
+    free(excess->date);
+    free(excess->clientsPrimiere);
+    free(excess);
+}

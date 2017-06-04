@@ -16,7 +16,7 @@ struct staticList{
     int capacity;
     int size;
     void** array;
-    size_t typeSize;
+     size_t typeSize;
     int current;
 };
 

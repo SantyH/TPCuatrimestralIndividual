@@ -18,10 +18,10 @@ typedef struct Excess{
 
 
 Excess* createExcess();
-void determinateUnreturnMovies(MovieClub* movieClub);
-void registerIncome(MovieClub* movieClub);
+void determinateUnreturnMovies(Excess* excess, MovieClub* movieClub);
+void registerIncome(Excess* excess, MovieClub* movieClub);
 //determinateExcess
-void rewardClients(MovieClub* movieClub);
+void rewardClients(Excess* excess, MovieClub* movieClub);
 void freeExcess(Excess* excess);
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_EXCESS_H
