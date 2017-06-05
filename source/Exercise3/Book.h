@@ -14,8 +14,8 @@ struct book{
     char* editorial;
 };
 
-Book* newBook();
-void unregisterBook();
+Book* newBook(char* editorial);
+void freeBook(char* editorial);
 void changeBook();
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_BOOK_H
