@@ -24,6 +24,14 @@ void checkAvailableMovie(StaticList* movies, char* movieTitle){
         }
     }
     printf("%s",strcat("Movie not Found: ",movieTitle));
+    showMovies(movies);
+}
+
+void showMovies(StaticList* movies){
+    printf("%s", "All availables Movies!");
+    for(int i=0; i<movies->size;++i){
+        printf("%s",((Movie*)(getActual(movies)))->title);
+    }
 }
 
 void checkMoviePremiere(StaticList* movies){

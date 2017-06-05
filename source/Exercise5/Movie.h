@@ -18,7 +18,6 @@ typedef struct Movie{
 Movie* createMovie(char* title, double price);
 void changePrice(Movie *movie, double price);
 void isAvailable(Movie* movie);
-//void rentMovie(Movie* movie,Client* client);
 double rentMovie(Movie* movie, int idMovieCard, double amount);
 void freeMovie(Movie* movie);
 

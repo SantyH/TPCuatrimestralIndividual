@@ -17,10 +17,11 @@ typedef struct Manager{
 
 
 Manager* createManager(char* name,char* surname, int DNI);
-void registerClient(MovieClub* movieClub, char* name, char* surname, int DNI);
+void registerClient(MovieClub* movieClub, Client* client);
 void generateMovieCard(Client* client, double amount);
 void generateExcess(MovieClub* movieClub);
 void increaseAmountMovieCard(MovieCard* movieCard, double amount);
+void saveMovie(MovieClub* movieClub, MovieCard* movieCard, Movie* movie);
 void freeManager(Manager* manager);
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_MANAGER_H

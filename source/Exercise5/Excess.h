@@ -12,9 +12,8 @@
 
 typedef struct Excess{
     int unreturnMovies;
-    double amount;
     double income;
-    StaticList* clientsPrimiere;
+    int numberOfPremiereClients;
     char* date;
     long timeStamp;
 }Excess;
@@ -23,7 +22,7 @@ typedef struct Excess{
 Excess* createExcess();
 void determinateUnreturnMovies(Excess* excess,struct MovieClub* movieClub);
 void registerIncome(Excess* excess, MovieClub* movieClub);
-//determinateExcess
+void determinateExcess(Excess* excess);
 void rewardClients(Excess* excess, MovieClub* movieClub);
 void freeExcess(Excess* excess);
 

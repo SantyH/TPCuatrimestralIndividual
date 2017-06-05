@@ -26,6 +26,24 @@ int scanInt(){
     }
     return i;
 }
+//
+//double scanDouble(){
+//    char line[256];
+//    int i = -1;
+//    int NaN = 1;
+//    while(NaN) {
+//        if (fgets(line, sizeof(line), stdin)) {
+//            if (1 == sscanf(line, "%d", &i)) {
+//                NaN = 0;
+//            }
+//            else {
+//                printf("Please enter an integer\n");
+//            }
+//        }
+//    }
+//    return i;
+//}
+//
 
 static void trim(char *str) {
     int len = strlen(str);

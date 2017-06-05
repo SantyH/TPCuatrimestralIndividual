@@ -6,6 +6,7 @@
 #include <time.h>
 #include <malloc.h>
 #include <mem.h>
+#include <stdio.h>
 #include "Excess.h"
 #include "Client.h"
 
@@ -23,7 +24,8 @@ Excess* createExcess(){
     strcpy(result->date, ctime(&calendarTime));
 
     result->unreturnMovies=0;
-//    result->income
+    result->income=0;
+    result->numberOfPremiereClients=0;
 }
 void determinateUnreturnMovies(Excess* excess, MovieClub* movieClub){
     for (int i = 0; i < (int) movieClub->clients; ++i) {
@@ -31,6 +33,7 @@ void determinateUnreturnMovies(Excess* excess, MovieClub* movieClub){
         excess->unreturnMovies += ((Client*) getActual(movieClub->clients))->movies->size;
     }
 }
+
 void registerIncome(Excess* excess, MovieClub* movieClub) {
     double partialAmount = 0;
     for (int i = 0; i < movieClub->clients->size; i++) {
@@ -45,7 +48,13 @@ void registerIncome(Excess* excess, MovieClub* movieClub) {
         }
     }
 }
-//determinateExcess
+
+void determinateExcess(Excess* excess){
+    printf("%s", excess->date);
+    printf("%s %d","Unreturn Movies: ",excess->unreturnMovies);
+    printf("%s %f","Income: ",excess->income);
+    printf("%s %d","Number of premiere Clients: ",excess->numberOfPremiereClients);
+}
 void rewardClients(Excess* excess, MovieClub* movieClub){
     for (int i = 0; i < movieClub->clients->size; ++i) {
         double amountPremiere= 0;
@@ -60,6 +69,5 @@ void rewardClients(Excess* excess, MovieClub* movieClub){
 }
 void freeExcess(Excess* excess){
     free(excess->date);
-    free(excess->clientsPrimiere);
     free(excess);
 }
