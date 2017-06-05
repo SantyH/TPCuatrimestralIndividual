@@ -2,5 +2,4 @@ cmake_minimum_required(VERSION 3.7)
 project(TPCuatrimestralIndividual)
 
 set(scannerUtil_SOURCE ScanUtil.c)
-#add_library(scannerutil ${scannerutil_SOURCE})
 add_library(scannerUtil ${scannerUtil_SOURCE})

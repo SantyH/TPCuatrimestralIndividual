@@ -9,6 +9,12 @@
 #include "Movie.h"
 #include "Manager.h"
 
+void MovieClubMain(MovieClub* movieClub);
+
+void ManagerMain(MovieClub* movieClub, Manager* manager);
+
+void ClientMain(MovieClub* movieClub, Client* client);
+
 int main(){
     MovieClub* movieClub = createMovieClub();
 
@@ -17,8 +23,10 @@ int main(){
     int DNI;
 
     printf("%s\n","Insert name, surname amd DNI for manager in charge: ");
-
-    Manager* manager = createManager(scanChar(),scanChar(),scanInt());
+    name = scanChar();
+    surname= scanChar();
+    DNI=scanInt();
+    Manager* manager = createManager(name,surname,DNI);
 
     int loop=1;
     while (loop){
@@ -38,11 +46,11 @@ int main(){
                 ManagerMain(movieClub, manager);
                 break;
             case 3:
-                printf("%s\n","Insert your DNI:");
-                int DNI = scanChar();
+                printf("%s\n","Insert your DNIAUX:");
+                int DNIAUX = scanInt();
                 for (int i = 0; i < movieClub->clients->size; ++i) {
                     goTo(movieClub->clients,i);
-                    if(((Client*) getActual(movieClub->clients))->DNI == DNI){
+                    if(((Client*) getActual(movieClub->clients))->DNI == DNIAUX){
                         ClientMain(movieClub,((Client*) getActual(movieClub->clients)));
                         break;
                     }
@@ -63,66 +71,49 @@ int main(){
                 }
                 freeManager(manager);
                 freeMovieClub(movieClub);
-
-                break;
-            default:break;
-        }
-    }
-}
-
-void ClientMain(MovieClub* movieClub, Client* client){
-    int loop=1;
-    while (loop){
-        printf("%s\n%s\n%s\n%s\n%s\n",
-               "1) Pick up your Movies.",
-               "2) Return Movie.",
-               "3) Check available Movie.",
-               "4) Check Movies Premiere.",
-               "0) Back."
-        );
-        int command=0;
-        scanf("%d",&command);
-        switch (command) {
-            case 1:
-                pickUpMovies(client,movieClub->movies);
-                break;
-            case 2:
-                printf("%s\n","Insert Movie title: ");
-                returnMovie(client,movieClub,scanChar());
-                break;
-            case 3:
-                printf("%s\n","Insert Movie title: ");
-                char* title = scanChar();
-                if (checkAvailableMovie(movieClub->movies,title)){
-                    Movie* movie = NULL;
-                    for (int i = 0; i < movieClub->movies->size; ++i) {
-                        goTo(movieClub->movies,i);
-                        if(strcmp(title,((Movie*) getActual(i))->title)){
-                         movie= (Movie*) getActual(i);
-                        }
-                    }
-                    printf("%s\n","Set any number if you want to rent this movie, else zero '0'.");
-                    int rentBoolean = scanInt();
-                    if(rentBoolean){
-                        rentMovie(movie,client->movieCard->idMovieCard,client->movieCard->totalAmount);
-                    }
-                }
-                break;
-            case 4:
-                checkMoviePremiere(movieClub->movies);
-                break;
-            case 5:
-                showMovies(movieClub->movies);
-                break;
-            case 0:
                 loop=0;
                 break;
             default:break;
         }
     }
 }
+void MovieClubMain(MovieClub* movieClub){
+   int loop=1;
+   while (loop) {
+       printf("%s\n%s\n%s\n",
+              "1) Insert Movie to MovieClub.",
+              "2) Change Movie price.",
+              "0) Back."
+       );
+       int command = 0;
+       scanf("%d", &command);
+       switch (command) {
+           case 1:
+               printf("%s\n", "Insert title and amount for the Movie: ");
+               goBack(movieClub->movies);
+               addNext(movieClub->movies, createMovie(scanChar(), scanInt()));
+               break;
+           case 2:
+               printf("%s\n", "Insert title for the Movie: ");
+               char *title = scanChar();
+               for (int i = 0; i < movieClub->movies->size; ++i) {
+                   goTo(movieClub->movies, i);
+                   if (strcmp(((Movie *) getActual(movieClub->movies))->title, title)) {
+                       printf("%s\n", "Insert amount for the Movie: ");
+                       changePrice((Movie *) getActual(movieClub->movies), scanInt());
+                       break;
+                   }
+               }
+               break;
+           case 0:
+               loop = 0;
+               break;
 
-void ManagerMain(MovieClub* movieClub, Manager* manager){
+           default:break;
+       }
+   }
+}
+ void ManagerMain(MovieClub* movieClub, Manager* manager){
     int loop=1;
     while (loop){
         printf("%s\n%s\n%s\n%s\n",
@@ -164,38 +155,55 @@ void ManagerMain(MovieClub* movieClub, Manager* manager){
     }
 }
 
- void MovieClubMain(MovieClub* movieClub){
+void ClientMain(MovieClub* movieClub, Client* client){
     int loop=1;
-    while (loop) {
-        printf("%s\n%s\n%s\n",
-               "1) Insert Movie to MovieClub.",
-               "2) Change Movie price.",
+    while (loop){
+        printf("%s\n%s\n%s\n%s\n%s\n",
+               "1) Pick up your Movies.",
+               "2) Return Movie.",
+               "3) Check available Movie.",
+               "4) Check Movies Premiere.",
                "0) Back."
         );
-        int command = 0;
-        scanf("%d", &command);
+        int command=0;
+        scanf("%d",&command);
         switch (command) {
             case 1:
-                printf("%s\n", "Insert title and amount for the Movie: ");
-                goBack(movieClub->movies);
-                addNext(movieClub->movies, createMovie(scanChar(), scanInt()));
+                pickUpMovies(client,movieClub->movies);
                 break;
             case 2:
-                printf("%s\n", "Insert title for the Movie: ");
-                char *title = scanChar();
-                for (int i = 0; i < movieClub->movies->size; ++i) {
-                    goTo(movieClub->movies, i);
-                    if (strcmp(((Movie *) getActual(movieClub->movies))->title, title)) {
-                        printf("%s\n", "Insert amount for the Movie: ");
-                        changePrice((Movie *) getActual(movieClub->movies), scanInt());
-                        break;
+                printf("%s\n","Insert Movie title: ");
+                returnMovie(client,movieClub,scanChar());
+                break;
+            case 3:
+                printf("%s\n","Insert Movie title: ");
+                char* title = scanChar();
+                if (checkAvailableMovie(movieClub->movies,title)){
+                    Movie* movie = NULL;
+                    for (int i = 0; i < movieClub->movies->size; ++i) {
+                        goTo(movieClub->movies,i);
+                        if(strcmp(title,((Movie*) getActual(movieClub->movies))->title)){
+                         movie= (Movie*) getActual(movieClub->movies);
+                        }
+                    }
+                    printf("%s\n","Set any number if you want to rent this movie, else zero '0'.");
+                    int rentBoolean = scanInt();
+                    if(rentBoolean){
+                        rentMovie(movie,client->movieCard->idMovieCard,client->movieCard->totalAmount);
                     }
                 }
                 break;
-            case 0:
-                loop = 0;
+            case 4:
+                checkMoviePremiere(movieClub->movies);
                 break;
-
+            case 5:
+                showMovies(movieClub->movies);
+                break;
+            case 0:
+                loop=0;
+                break;
+            default:break;
         }
     }
 }
+
