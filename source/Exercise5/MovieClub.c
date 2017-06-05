@@ -1,24 +1,22 @@
 //
-// Created by Lucas on 30/5/2017.
+// Created by Lucas on 4/6/2017.
 //
 
 #include <malloc.h>
 #include "MovieClub.h"
+#include "Client.h"
+#include "Excess.h"
 
-MovieClub* createMovieClub(Manager* manager){
-
+MovieClub* createMovieClub(){
     MovieClub* result = malloc(sizeof(MovieClub));
-    result->income = 0;
-    result->movies = createStaticList(5, sizeof(Movie));
+    result->movies = createStaticList(20, sizeof(Movie));
     result->clients = createStaticList(5, sizeof(Client));
     result->excesses = createStaticList(5, sizeof(Excess));
-    result->manager = manager;
+    result->income=0;
 }
-
 void freeMovieClub(MovieClub* movieClub){
     free(movieClub->movies);
-    free(movieClub->excesses);
     free(movieClub->clients);
-    freeManager(movieClub->manager);
+    free(movieClub->excesses);
     free(movieClub);
 }

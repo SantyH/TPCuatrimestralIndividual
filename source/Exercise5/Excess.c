@@ -7,6 +7,7 @@
 #include <malloc.h>
 #include <mem.h>
 #include "Excess.h"
+#include "Client.h"
 
 
 Excess* createExcess(){
@@ -46,7 +47,16 @@ void registerIncome(Excess* excess, MovieClub* movieClub) {
 }
 //determinateExcess
 void rewardClients(Excess* excess, MovieClub* movieClub){
-
+    for (int i = 0; i < movieClub->clients->size; ++i) {
+        double amountPremiere= 0;
+        int numberOfPremiere = ((Client*) getActual(movieClub->clients))->movieCard->numberOfPrimiere;
+        goTo(movieClub->clients,i);
+        if(numberOfPremiere >=3){
+            amountPremiere = 5 * numberOfPremiere;
+        }
+        ((Client*) getActual(movieClub->clients))->movieCard->numberOfPrimiere = 0;
+        ((Client*) getActual(movieClub->clients))->movieCard->totalAmount += amountPremiere;
+    }
 }
 void freeExcess(Excess* excess){
     free(excess->date);

@@ -18,8 +18,8 @@ typedef struct Manager{
 
 Manager* createManager(char* name,char* surname, int DNI);
 void registerClient(MovieClub* movieClub, char* name, char* surname, int DNI);
-void generateExcess(MovieClub* movieClub);
 void generateMovieCard(Client* client, double amount);
+void generateExcess(MovieClub* movieClub);
 void increaseAmountMovieCard(MovieCard* movieCard, double amount);
 void freeManager(Manager* manager);
 

@@ -12,7 +12,7 @@ Manager* createManager(char* name,char* surname, int DNI){
     result->DNI = DNI;
 }
 void registerClient(MovieClub* movieClub, char* name, char* surname, int DNI){
-    addNext(movieClub, createClient(name,surname,DNI));
+    addNext(movieClub->clients, createClient(name,surname,DNI));
 }
 void generateExcess(MovieClub* movieClub){
     goBack(movieClub->excesses);
@@ -20,7 +20,8 @@ void generateExcess(MovieClub* movieClub){
 }
 
 void generateMovieCard(Client* client, double amount){
-    giveMovieCard(client, createMovieCard(client->DNI,amount));
+    MovieCard* result = createMovieCard(client->DNI,amount);
+    client->movieCard = result;
 }
 
 void increaseAmountMovieCard(MovieCard* movieCard, double amount){

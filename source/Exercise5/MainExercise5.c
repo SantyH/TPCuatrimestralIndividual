@@ -5,11 +5,12 @@
 #include <stdio.h>
 #include "MovieClub.h"
 #include "../ScannerUtil/ScanUtil.h"
+#include "Movie.h"
 
 int main(){
-    char* name;
-    char* surname;
-    int DNI;
+//    char* name;
+//    char* surname;
+//    int DNI;
 
 //    printf("%s","Introducir nombre, apellido y dni del gerente a cargo: ");
 //    scanf("%s",&name);
@@ -17,7 +18,8 @@ int main(){
 //    scanf("%d",&DNI);
 //    MovieClub* movieClub = createMovieClub(createManager(name,surname,DNI));
 
-    Movie* movie = createMovie(scanChar(),15);
+
+    Movie* movie = createMovie("pelicula",15);
 
 //    int loop=0;
 //    while (loop==0){

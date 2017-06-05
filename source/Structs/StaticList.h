@@ -6,6 +6,7 @@
 #ifndef STRUCTURES_STATICLIST_H
 #define STRUCTURES_STATICLIST_H
 
+#include "stddef.h"
 
 typedef struct staticList StaticList;
 
@@ -16,7 +17,7 @@ struct staticList{
     int capacity;
     int size;
     void** array;
-     size_t typeSize;
+    size_t typeSize;
     int current;
 };
 

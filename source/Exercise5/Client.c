@@ -1,35 +1,34 @@
 //
-// Created by Lucas on 30/5/2017.
+// Created by Lucas on 4/6/2017.
 //
 
-#include <stdlib.h>
+#include <malloc.h>
 #include <mem.h>
 #include <stdio.h>
 #include "Client.h"
-
-
 Client* createClient(char* name, char* surname, int DNI){
     Client* resultClient = malloc(sizeof(Client));
     resultClient->name = name;
     resultClient->surname = surname;
     resultClient->DNI = DNI;
-    resultClient->movieCard = NULL;
+    resultClient->movieCard= malloc(sizeof(MovieCard));
     resultClient->movies = createStaticList(5, sizeof(Movie));
     return resultClient;
 }
-
-void giveMovieCard(Client* client, MovieCard* movieCard){
-    client->movieCard=movieCard;
-}
-
-void addMovie(Client* client, Movie* movie){
-    addNext(client->movies, movie);
+void pickUpMovies(Client* client, StaticList* movies){
+    goBack(client->movies);
+    for (int i = 0; i < movies->size; ++i) {
+        if(client->movieCard->idMovieCard == ((Movie*) getActual(movies))->idMovieCard ){
+            addNext(client->movies, ((Movie*) getActual(movies)));
+        }
+    }
 }
 
 void returnMovie(Client* client,MovieClub* movieClub, char* movieTitle){
     for(int i=0; i<client->movies->size;i++){
         goTo(movieClub->movies,i);
         if(strcmp(movieTitle, ((Movie*) getActual(client->movies))->title )){
+            // COMPARE DAYS AND INCREASE PREMIERE CONTABILITIES IN MOVIECARD
             goBack(movieClub->movies);
             addNext(movieClub->movies,(Movie*) getActual(client->movies));
             return;
@@ -43,4 +42,3 @@ void freeClient(Client* client){
     free(client->movies);
     free(client);
 }
-

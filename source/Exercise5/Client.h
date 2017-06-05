@@ -1,9 +1,10 @@
 //
-// Created by Lucas on 30/5/2017.
+// Created by Lucas on 4/6/2017.
 //
 
 #ifndef TPCUATRIMESTRALINDIVIDUAL_CLIENT_H
 #define TPCUATRIMESTRALINDIVIDUAL_CLIENT_H
+
 
 #include "MovieCard.h"
 #include "../Structs/StaticList.h"
@@ -18,10 +19,7 @@ typedef struct Client{
 } Client;
 
 Client* createClient(char* name, char* surname, int DNI);
-void giveMovieCard(Client* client, MovieCard* movieCard);
-void addMovie(Client* client, Movie* movie);
+void pickUpMovies(Client* client, StaticList* movies);
 void returnMovie(Client* client, MovieClub* movieClub,char* movieTitle);
 void freeClient(Client* client);
-
-
 #endif //TPCUATRIMESTRALINDIVIDUAL_CLIENT_H
