@@ -15,16 +15,18 @@ MovieCard* createMovieCard(int id, double amount){
     movieCard->numberOfPrimiere=0;
 
 }
-void checkAvailableMovie(StaticList* movies, char* movieTitle){
+int checkAvailableMovie(StaticList* movies, char* movieTitle){
     for(int i=0; i<movies->size;i++){
         goTo(movies,i);
         if(((Movie*) getActual(movies))->title == movieTitle){
             printf("%s", strcat("Movie Found: ",movieTitle));
-            return;
+            isAvailable(((Movie*) getActual(movies)));
+            return 1;
         }
     }
     printf("%s",strcat("Movie not Found: ",movieTitle));
     showMovies(movies);
+    return 0;
 }
 
 void showMovies(StaticList* movies){

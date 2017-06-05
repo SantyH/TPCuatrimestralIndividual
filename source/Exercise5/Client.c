@@ -41,7 +41,7 @@ void returnMovie(Client* client,MovieClub* movieClub, char* movieTitle){
 }
 
 void freeClient(Client* client){
-    free(client->movieCard);
+    freeMovieCard(client->movieCard);
     free(client->movies);
     free(client);
 }

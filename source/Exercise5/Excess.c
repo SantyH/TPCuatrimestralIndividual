@@ -55,7 +55,7 @@ void determinateExcess(Excess* excess){
     printf("%s %f","Income: ",excess->income);
     printf("%s %d","Number of premiere Clients: ",excess->numberOfPremiereClients);
 }
-void rewardClients(Excess* excess, MovieClub* movieClub){
+void rewardClients(MovieClub* movieClub){
     for (int i = 0; i < movieClub->clients->size; ++i) {
         double amountPremiere= 0;
         int numberOfPremiere = ((Client*) getActual(movieClub->clients))->movieCard->numberOfPrimiere;

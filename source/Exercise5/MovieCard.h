@@ -17,7 +17,7 @@ typedef struct MovieCard{
 }MovieCard;
 
 MovieCard* createMovieCard(int id, double amount);
-void checkAvailableMovie(StaticList* movies, char* movieTitle);
+int checkAvailableMovie(StaticList* movies, char* movieTitle);
 void showMovies(StaticList* movies);
 void checkMoviePremiere(StaticList* movies);
 void freeMovieCard(MovieCard* movieCard);

@@ -22,34 +22,21 @@ void changePrice(Movie* movie, double price){
     movie->price = price;
 }
 
-//void rentMovie(Movie* movie, struct Client* client) {
-//    if (client->movieCard->totalAmount >= movie->price) {
-//
-//        client->movieCard->totalAmount -= movie->price;
-//
-//        movie->idMovieCard = client->movieCard->idMovieCard;
-//
-//
-//        time_t calendarTime;
-//        time(&calendarTime);
-//
-//        movie->rentDate = malloc(sizeof(char*));
-//        strcpy(movie->rentDate, ctime(&calendarTime));
-//
-//        addMovie(client,movie);
-//    }
-//}
-
 double rentMovie(Movie* movie, int idMovieCard, double amount){
     if(amount>=movie->price && movie->idMovieCard==0){
         movie->idMovieCard=idMovieCard;
 
-        //set rent DAY
+        time_t calendarTime;
+        time(&calendarTime);
+
+        movie->rentDate = malloc(sizeof(char *));
+        strcpy(movie->rentDate, ctime(&calendarTime));
+
 
         printf("%s", "You rent the Movie!");
         return amount;
     } else {
-        printf("%s", "You can't rent the Movie! Enough amount or its already rent.");
+        printf("%s", "You can't rent the Movie! Enough amount of money or it´s already rent.");
         return 0;
     }
 }

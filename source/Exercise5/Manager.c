@@ -6,6 +6,7 @@
 #include <time.h>
 #include <math.h>
 #include <stdio.h>
+#include <mem.h>
 #include "Manager.h"
 
 Manager* createManager(char* name,char* surname, int DNI){
@@ -18,8 +19,14 @@ void registerClient(MovieClub* movieClub, Client* client){
     addNext(movieClub->clients,client);
 }
 void generateExcess(MovieClub* movieClub){
+    Excess* excess =createExcess();
+    determinateUnreturnMovies(excess, movieClub);
+    registerIncome(excess, movieClub);
+    rewardClients(movieClub);
+    determinateExcess(excess);
+
     goBack(movieClub->excesses);
-    addNext(movieClub->excesses, createExcess(movieClub));
+    addNext(movieClub->excesses, excess);
 }
 
 void generateMovieCard(Client* client, double amount){
@@ -27,14 +34,21 @@ void generateMovieCard(Client* client, double amount){
     client->movieCard = result;
 }
 void saveMovie(MovieClub* movieClub, MovieCard* movieCard, Movie* movie){
+    time_t calendarTime;
+    time(&calendarTime);
+
+    movie->devolutionDate = malloc(sizeof(char *));
+    strcpy(movie->devolutionDate, ctime(&calendarTime));
+
     time_t currentTime = time(NULL);
     long timeStampToday = currentTime;
+
     // COMPARE DAYS AND INCREASE PREMIERE CONTABILITIES IN MOVIECARD
-    double secondDiff = ( difftime(movie->timeStamp, timeStampToday));
-    if ( secondDiff <= 86400){ // Seconds per day.
+    double secondsDiff = difftime(movie->timeStamp, timeStampToday);
+    if ( secondsDiff <= 86400){ // Seconds per day.
         movieCard->numberOfPrimiere++;
     }else{
-        double punishmentCost = fabs(secondDiff-86400) * 10;
+        double punishmentCost = fabs(secondsDiff-86400) * 10;
         movieCard->totalAmount -= punishmentCost;
         printf("%s %f","PunismentCost: ", punishmentCost);
     }
