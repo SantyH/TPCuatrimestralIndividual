@@ -44,7 +44,7 @@ void saveMovie(MovieClub* movieClub, MovieCard* movieCard, Movie* movie){
     long timeStampToday = currentTime;
 
     // COMPARE DAYS AND INCREASE PREMIERE CONTABILITIES IN MOVIECARD
-    double secondsDiff = difftime(movie->timeStamp, timeStampToday);
+    double secondsDiff = difftime(movie->creationDate, timeStampToday);
     if ( secondsDiff <= 86400){ // Seconds per day.
         movieCard->numberOfPrimiere++;
     }else{

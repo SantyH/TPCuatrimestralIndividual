@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <mem.h>
+#include <time.h>
 #include "MovieCard.h"
 
 
@@ -18,8 +19,8 @@ MovieCard* createMovieCard(int id, double amount){
 int checkAvailableMovie(StaticList* movies, char* movieTitle){
     for(int i=0; i<movies->size;i++){
         goTo(movies,i);
-        if(((Movie*) getActual(movies))->title == movieTitle){
-            printf("%s", strcat("Movie Found: ",movieTitle));
+        if(strcmp(((Movie*) getActual(movies))->title,movieTitle) == 0){
+            printf("%s%s\n","Movie Found: ",movieTitle);
             isAvailable(((Movie*) getActual(movies)));
             return 1;
         }
@@ -37,10 +38,16 @@ void showMovies(StaticList* movies){
 }
 
 void checkMoviePremiere(StaticList* movies){
+    time_t currentTime = time(NULL);
+    long timeStampToday = currentTime;
+
     for (int i = 0; i <movies->size; ++i) {
-//        DateTime dateTime = Convert.ToDateTime(movies)
-//
-//        if()
+        goTo(movies,i);
+
+        double secondsDiff = difftime( ((Movie*)getActual(movies))->creationDate, timeStampToday);
+        if ( secondsDiff <= 86400){ //Compare to 1 day in seconds
+            printf("%s%s\n","Movie Title: ",((Movie*)getActual(movies))->title);
+        }
     }
 }
 

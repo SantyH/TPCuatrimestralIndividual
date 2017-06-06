@@ -30,30 +30,43 @@ Excess* createExcess(){
 void determinateUnreturnMovies(Excess* excess, MovieClub* movieClub){
     for (int i = 0; i < (int) movieClub->clients; ++i) {
         goTo(movieClub->clients,i);
-        excess->unreturnMovies += ((Client*) getActual(movieClub->clients))->movies->size;
+        for (int j = 0; j < ((Client*) getActual(movieClub->clients))->movies->size; ++j) {
+            excess->unreturnMovies++;
+        }
     }
 }
 
 void registerIncome(Excess* excess, MovieClub* movieClub) {
-    double partialAmount = 0;
+    time_t currentTime = time(NULL);
+    long timeStampToday = currentTime;
+
     for (int i = 0; i < movieClub->clients->size; i++) {
         goTo(movieClub->clients, i);
+
         for (int j = 0; j < ((Client *) getActual(movieClub->clients))->movies->size; ++j) {
-            goTo(((Client *) getActual(movieClub->clients))->movies, j);
-//            if(strcmp(excess.date,
-//                    ((Movie*) getActual(((Client*) getActual(movieClub->clients))->movies)).)
-//            if(excess.timeStamp)
-//        }
-//        partialAmount +=
+            goTo(((Client *) getActual(movieClub->clients))->movies,j);
+            getActual(((Client *) getActual(movieClub->clients))->movies);
+
+            double secondsDiff = difftime(((Movie*)getActual(((Client *) getActual(movieClub->clients))->movies))->rentDate, timeStampToday);
+            if ( secondsDiff <= 86400){ //Compare to 1 day in seconds
+                excess->income += ((Movie*)getActual(((Client *) getActual(movieClub->clients))->movies))->price;
+            }
+        }
+    }
+    for (int k = 0; k < movieClub->movies->size; ++k) {
+        goTo(movieClub->movies,k);
+        if(((Movie*)getActual(movieClub->movies))->idMovieCard !=0){
+            excess->income += ((Movie*)getActual(movieClub->movies))->price;
         }
     }
 }
 
 void determinateExcess(Excess* excess){
-    printf("%s", excess->date);
-    printf("%s %d","Unreturn Movies: ",excess->unreturnMovies);
-    printf("%s %f","Income: ",excess->income);
-    printf("%s %d","Number of premiere Clients: ",excess->numberOfPremiereClients);
+    printf("\n%s\n %s%d\n %s%f\n %s%d\n", excess->date,
+           "Unreturn Movies: ",excess->unreturnMovies,
+           "Income: ",excess->income,
+           "Number of premiere Clients: ",excess->numberOfPremiereClients
+    );
 }
 void rewardClients(MovieClub* movieClub){
     for (int i = 0; i < movieClub->clients->size; ++i) {
@@ -67,6 +80,7 @@ void rewardClients(MovieClub* movieClub){
         ((Client*) getActual(movieClub->clients))->movieCard->totalAmount += amountPremiere;
     }
 }
+
 void freeExcess(Excess* excess){
     free(excess->date);
     free(excess);

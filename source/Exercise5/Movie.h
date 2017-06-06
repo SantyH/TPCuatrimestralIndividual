@@ -10,9 +10,9 @@ typedef struct Movie{
     char* title;
     double price;
     int idMovieCard;
-    char* rentDate;
-    char* devolutionDate;
-    long timeStamp;
+    long rentDate;
+    long devolutionDate;
+    long creationDate;
 } Movie;
 
 Movie* createMovie(char* title, double price);
