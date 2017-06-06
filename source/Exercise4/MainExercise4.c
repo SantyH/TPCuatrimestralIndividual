@@ -13,13 +13,15 @@ void ClientHotelMain(ClientHotel *client, Receptionist* receptionist,char* hotel
 // Created by Lucas on 6/6/2017.
 //
 int main(){
-    char* hotelName = scanArrayOfChar();
+    printf("%s\n","Insert Hotel's name: ");
+    char* hotelName;
+    hotelName =  scanArrayOfChar();
     StaticList* clients = createStaticList(5, sizeof(ClientHotel));
     char* name;
     char* surname;
     int DNI;
 
-    printf("%s\n","Insert name, surname amd DNI for receptionist in charge: ");
+    printf("%s\n","Insert name, surname amd DNI for receptionist in charge:");
     name = scanArrayOfChar();
     surname= scanArrayOfChar();
     DNI=scanInt();
@@ -27,7 +29,7 @@ int main(){
 
     int loop=1;
     while (loop){
-        printf("\n%s\n%s\n%s\n%s\n\n",
+        printf("%s\n %s\n %s\n %s\n \n",
                "PRINCIPAL MENU",
                "1) Client.",
                "2) Hotel Administration.",
@@ -37,20 +39,31 @@ int main(){
         command = scanInt();
         switch (command){
             case 1:
-                printf("%s\n","Insert your DNI");
+                printf("%s\n","Insert your DNI:");
                 DNI = scanInt();
                 for(int i=0; i<clients->size; ++i){
                     if(((ClientHotel*) getActual(clients))->DNI == DNI){
-                        ClientHotelMain(((ClientHotel*) getActual(clients)), receptionist,hotelName);
+                        if(receptionist->rooms->size>0){
+                            ClientHotelMain(((ClientHotel*) getActual(clients)), receptionist,hotelName);
+                        }
+                        else{
+                            printf("%s\n","There are no rooms loaded!");
+                        }
                         break;
                     }
                 }
+                printf("%s\n %s\n","DNI not found! Initialize new Client:",
+                "Insert name, surname and amount of Cash.");
                 name = scanArrayOfChar();
                 surname = scanArrayOfChar();
                 double amount = scanInt();
                 goBack(clients);
                 addNext(clients, createClientHotel(name,surname,DNI,amount));
-                ClientHotelMain(((ClientHotel*) getActual(clients)), receptionist,hotelName);
+                if(receptionist->rooms->size>0) {
+                    ClientHotelMain(((ClientHotel *) getActual(clients)), receptionist, hotelName);
+                }else{
+                    printf("%s\n","There are no rooms loaded!");
+                }
                 break;
             case 2:
                 HotelAdministrationMain(receptionist,hotelName);
@@ -73,13 +86,13 @@ void ClientHotelMain(ClientHotel *client, Receptionist* receptionist, char* hote
     int loop=1;
     int roomNumber;
     while (loop){
-        printf("\n%s\n %s\n %s\n %s\n %s\n  %s\n \n",
+        printf("\n %s\n %s\n %s\n %s\n %s\n  %s\n %s\n\n",
                "CLIENT MENU",
                "1) Make reservation.",
                "2) Check in.",
                "3) Get rooms information.",
                "4) Increase wallet's client.",
-               "5) Leave room."
+               "5) Leave room.",
                "0) Back."
         );
         int command=0;
@@ -92,6 +105,8 @@ void ClientHotelMain(ClientHotel *client, Receptionist* receptionist, char* hote
                     printf("%s\n","Insert quantity of days for the reservation: ");
                     int days = scanInt();
                     makeReservation(client, receptionist,roomNumber, days);
+                } else{
+                    printf("%s\n","Room not Found!");
                 }
                 break;
             case 2:
@@ -145,18 +160,18 @@ void HotelAdministrationMain(Receptionist* receptionist,char *name) {
     double price;
     int loop = 1;
     while (loop) {
-        printf("\n%s\n%s\n%s\n%s\n\n",
+        printf("\n %s\n %s\n %s\n %s\n %s\n \n",
                "HOTEL ADMINISTRATION MENU",
                "1) Insert room.",
                "2) Delete last room.",
-               "3) Give information. "
-                       "0) Back."
+               "3) Give information. ",
+               "0) Back."
         );
         int command = 0;
         command = scanInt();
         switch (command) {
             case 1:
-                printf("%s\n", "Insert your room type and price:");
+                printf("%s\n","Insert your room type and price:");
                 roomType = scanArrayOfChar();
                 price = scanInt();
                 goBack(receptionist->rooms);

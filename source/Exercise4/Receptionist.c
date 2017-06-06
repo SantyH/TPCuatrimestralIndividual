@@ -22,25 +22,34 @@ Receptionist* createReceptionist(char* name,char* surname, int DNI){
     return receptionist;
 }
 
-void giveInformation(Receptionist* receptionist){
-    for (int i = 0; i < receptionist->rooms->size; ++i) {
-        printf("%s%s\n %s%d\n %s%f\n","Room type: ",((Room*)getActual(receptionist->rooms))->roomType,
-               "Room's number: ",((Room*)getActual(receptionist->rooms))->roomNumber,
-               "Room's price: ",((Room*)getActual(receptionist->rooms))->price);
+void giveInformation(Receptionist* receptionist) {
+    if (receptionist->rooms->size>0) {
+        for (int i = 0; i < receptionist->rooms->size; ++i) {
+            goTo(receptionist->rooms,i);
+            printf("%s%s\n %s%d\n %s%f\n", "Room type: ", ((Room *) getActual(receptionist->rooms))->roomType,
+                   "Room's number: ", ((Room *) getActual(receptionist->rooms))->roomNumber,
+                   "Room's price: ", ((Room *) getActual(receptionist->rooms))->price);
+        }
     }
-    for (int j = 0; j < receptionist->invoices->size; ++j) {
-        printf("%s%s\n %s%s\n %s%d\n",
-               "Date: ",((Invoice*)getActual(receptionist->invoices))->invoiceDate,
-                "Invoice State: ", ((Invoice*)getActual(receptionist->invoices))->payState,
-               "Client DNI: ", ((Invoice*)getActual(receptionist->invoices))->clientDNI
-        );
+    if (receptionist->invoices->size>0) {
+        for (int j = 0; j < receptionist->invoices->size; ++j) {
+            goTo(receptionist->invoices,j);
+            printf("%s%s\n %s%s\n %s%d\n",
+                   "Date: ", ((Invoice *) getActual(receptionist->invoices))->invoiceDate,
+                   "Invoice State: ", ((Invoice *) getActual(receptionist->invoices))->payState,
+                   "Client DNI: ", ((Invoice *) getActual(receptionist->invoices))->clientDNI
+            );
+        }
     }
-    for (int k = 0; k < receptionist->reservations->size; ++k) {
-        printf("%s%s\n %s%d\n %s%d\n",
-               "Client Surname: ",((Reservation*)getActual(receptionist->reservations))->clientSurname,
-               "Client DNI: ", ((Reservation*)getActual(receptionist->reservations))->clientDNI,
-               "Room number: ", ((Reservation*)getActual(receptionist->reservations))->roomNumber
-        );
+    if (receptionist->reservations->size>0) {
+        for (int k = 0; k < receptionist->reservations->size; ++k) {
+            goTo(receptionist->reservations,k);
+            printf("%s%s\n %s%d\n %s%d\n",
+                   "Client Surname: ", ((Reservation *) getActual(receptionist->reservations))->clientSurname,
+                   "Client DNI: ", ((Reservation *) getActual(receptionist->reservations))->clientDNI,
+                   "Room number: ", ((Reservation *) getActual(receptionist->reservations))->roomNumber
+            );
+        }
     }
 }
 
@@ -50,7 +59,7 @@ int checkRoom(Receptionist* receptionist,int number){
             goTo(receptionist->rooms,i);
             if( ((Room*)getActual(receptionist->rooms))->roomNumber == number &&
                     strcmp( ((Room*)getActual(receptionist->rooms))->occupate,"FREE") == 0){
-                printf("%s\n","Room found and it´s available!");
+                printf("%s\n","Room found and it's available!");
                 return 1;
             }
         }
@@ -87,7 +96,7 @@ void freeReceptionist(Receptionist* receptionist){
     }
     for (int i = 0; i < receptionist->invoices->size; ++i) {
         goTo(receptionist->invoices,i);
-        freeRoom(((Room*)getActual(receptionist->invoices)));
+        freeInvoice((Invoice*)getActual(receptionist->invoices));
     }
     free(receptionist->rooms);
     free(receptionist->reservations);

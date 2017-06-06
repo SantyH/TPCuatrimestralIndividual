@@ -8,6 +8,7 @@
 #include "Room.h"
 Room* createRoom(char* roomType, int roomNumber, double price){
     Room* room = malloc(sizeof(Room));
+    room->roomType=roomType;
     room->roomNumber = roomNumber;
     room->price = price;
     room->occupate = "FREE";
