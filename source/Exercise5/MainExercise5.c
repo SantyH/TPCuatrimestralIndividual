@@ -24,8 +24,8 @@ int main(){
     int DNI;
 
     printf("%s\n","Insert name, surname and DNI for manager in charge: ");
-    name = scanChar();
-    surname= scanChar();
+    name = scanArrayOfChar();
+    surname= scanArrayOfChar();
     DNI=scanInt();
     Manager* manager = createManager(name,surname,DNI);
 
@@ -97,14 +97,14 @@ void MovieClubMain(MovieClub* movieClub){
            case 1:
                printf("%s\n", "Insert movieTitle and price for the Movie: ");
                goBack(movieClub->movies);
-               movieTitle = scanChar();
+               movieTitle = scanArrayOfChar();
                price = scanInt();
                Movie* movie = createMovie(movieTitle,price);
                addNext(movieClub->movies, movie);
                break;
            case 2:
                printf("%s\n", "Insert movieTitle for the Movie: ");
-               movieTitle = scanChar();
+               movieTitle = scanArrayOfChar();
                for (int i = 0; i < movieClub->movies->size; ++i) {
                    goTo(movieClub->movies, i);
                    if (strcmp(((Movie *) getActual(movieClub->movies))->title, movieTitle) ==0) {
@@ -142,8 +142,8 @@ void MovieClubMain(MovieClub* movieClub){
         switch (command) {
             case 1:
                 printf("%s\n","Insert client's name, surname and DNI:");
-                name = scanChar();
-                surname = scanChar();
+                name = scanArrayOfChar();
+                surname = scanArrayOfChar();
                 DNI = scanInt();
                 Client* client = createClient(name,surname,DNI);
                 registerClient(movieClub,client);

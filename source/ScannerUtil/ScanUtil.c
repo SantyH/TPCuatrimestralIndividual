@@ -14,11 +14,11 @@
 int scanInt(){
     char line[256];
     int i = -1;
-    int NaN = 1;
-    while(NaN) {
+    int loop = 1;
+    while(loop) {
         if (fgets(line, sizeof(line), stdin)) {
             if (1 == sscanf(line, "%d", &i)) {
-                NaN = 0;
+                loop = 0;
             }
             else {
                 printf("Please enter an integer\n");
@@ -27,24 +27,24 @@ int scanInt(){
     }
     return i;
 }
-//
-//double scanDouble(){
-//    char line[256];
-//    int i = -1;
-//    int NaN = 1;
-//    while(NaN) {
-//        if (fgets(line, sizeof(line), stdin)) {
-//            if (1 == sscanf(line, "%d", &i)) {
-//                NaN = 0;
-//            }
-//            else {
-//                printf("Please enter an integer\n");
-//            }
-//        }
-//    }
-//    return i;
-//}
-//
+
+double scanDouble(){
+    char line[256];
+    int i = -1;
+    int loop = 1;
+    while(loop) {
+        if (fgets(line, sizeof(line), stdin)) {
+            if (1 == sscanf(line, "%f", &i)) {
+                loop = 0;
+            }
+            else {
+                printf("Please enter an double\n");
+            }
+        }
+    }
+    return i;
+}
+
 
 static void trim(char *str) {
     int len = strlen(str);
@@ -67,12 +67,12 @@ static void trim(char *str) {
 }
 
 /*
- * Function: scanChar
+ * Function: scanArrayOfChar
  * Description: takes a string input from the user, ignoring trailing and leading whitespace.
  * Returns: inputted string.
  */
 
-char* scanChar(){
+char* scanArrayOfChar(){
     size_t bufferSize = sizeof(char) * 256;
     char* line = malloc(bufferSize);
     while(1) {

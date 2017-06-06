@@ -3,6 +3,6 @@
 #define TPCUAT_GRUPO11_SCANUTIL_H
 
 int scanInt();
-char* scanChar();
+char* scanArrayOfChar();
 
 #endif //TPCUAT_GRUPO11_SCANUTIL_H
