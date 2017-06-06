@@ -13,6 +13,7 @@ struct student{
     Person* person;
 };
 
+Student* newStudent();
 void studentTakeMaterial();
 void studentLeaveMaterial();
 

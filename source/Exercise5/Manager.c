@@ -2,11 +2,13 @@
 // Created by Lucas on 30/5/2017.
 //
 
-#include <malloc.h>
+//#include <malloc.h>
 #include <time.h>
 #include <math.h>
 #include <stdio.h>
-#include <mem.h>
+//#include <mem.h>
+#include <stdlib.h>
+#include <memory.h>
 #include "Manager.h"
 
 Manager* createManager(char* name,char* surname, int DNI){

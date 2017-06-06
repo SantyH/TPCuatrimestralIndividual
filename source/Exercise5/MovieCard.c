@@ -4,8 +4,9 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <mem.h>
+//#include <mem.h>
 #include <time.h>
+#include <memory.h>
 #include "MovieCard.h"
 
 

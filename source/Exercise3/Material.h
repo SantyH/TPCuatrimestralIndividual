@@ -15,11 +15,13 @@ struct material{
     char* title;
     int year;
     char* status;
+    StaticList materialList;
+    StaticList personList;
 };
 
 Material* newMaterial(char* type, int code, char* author, char* title, int year);
 void deleteMaterial(int code);
-void changeMaterial(int code);
+void changeMaterialCode(int code);
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_MATERIAL_H
 

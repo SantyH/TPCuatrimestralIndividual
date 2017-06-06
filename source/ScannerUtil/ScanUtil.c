@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <memory.h>
-#include <malloc.h>
+//#include <malloc.h>
 #include <ctype.h>
+#include <stdlib.h>
 #include "ScanUtil.h"
 
 /*

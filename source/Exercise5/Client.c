@@ -2,12 +2,14 @@
 // Created by Lucas on 4/6/2017.
 //
 
-#include <malloc.h>
-#include <mem.h>
+//#include <malloc.h>
+//#include <mem.h>
 #include <stdio.h>
 #include <sys/types.h>
 #include <time.h>
 #include <math.h>
+#include <stdlib.h>
+#include <memory.h>
 #include "Client.h"
 #include "Manager.h"
 

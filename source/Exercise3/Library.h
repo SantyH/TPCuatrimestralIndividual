@@ -9,16 +9,18 @@
 
 typedef struct library Library;
 
-struct lirary{
-    LinkedList* materials;
-    LinkedList* persons;
+struct library{
+    StaticList* materials;
+    StaticList* persons;
     int personsIdCount;
     int materialCount;
 };
 
+Library* newLibrary();
 void loadMaterial();
 void deleteMaterial(int code);
 void loadPerson();
 void deletePerson(int id);
+void freeLibrary();
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_LIBRARY_H

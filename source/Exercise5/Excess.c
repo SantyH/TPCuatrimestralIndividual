@@ -4,9 +4,11 @@
 
 
 #include <time.h>
-#include <malloc.h>
-#include <mem.h>
+//#include <malloc.h>
+//#include <mem.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <memory.h>
 #include "Excess.h"
 #include "Client.h"
 

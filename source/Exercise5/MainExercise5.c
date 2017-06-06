@@ -3,7 +3,8 @@
 //
 
 #include <stdio.h>
-#include <mem.h>
+#include <memory.h>
+//#include <mem.h>
 #include "MovieClub.h"
 #include "../ScannerUtil/ScanUtil.h"
 #include "Movie.h"
@@ -22,7 +23,7 @@ int main(){
     char* surname;
     int DNI;
 
-    printf("%s\n","Insert name, surname amd DNI for manager in charge: ");
+    printf("%s\n","Insert name, surname and DNI for manager in charge: ");
     name = scanChar();
     surname= scanChar();
     DNI=scanInt();

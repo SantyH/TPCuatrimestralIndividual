@@ -16,8 +16,10 @@ struct person{
     int numberOfBooks;
     double toPay;
     int enrollment;
+    Material material;
 };
 
+void newPerson(char* personType, char* name, char* surName, char* email, int phone, int enrollment);
 void takeMaterial(int code);
 void leaveMaterial();
 

@@ -14,6 +14,18 @@ Book* newBook(char* editorial, char* type, int code, char* author, char* title, 
     book->material->year = year;
 }
 
-void freeBook(){
+void freeBook(Book* book){
+    free(book->material->type);
+    free(book->material->code);
+    free(book->material->author);
+    free(book->material->title);
+    free(book->material->year);
+    free(book->material->status);
+    free(book->material);
+    free(book->editorial);
+    free(book);
+}
 
+void changeBook(Book* book, int code){
+    book->material->code = code;
 }

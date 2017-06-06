@@ -3,6 +3,8 @@
 //
 
 #include "Material.h"
+#include "LinkedList.h"
+#include "Person.h"
 
 Material* newMaterial(char* type, int code, char* author, char* title, int year){
     Material* material = malloc(sizeof(Material));
@@ -12,9 +14,13 @@ Material* newMaterial(char* type, int code, char* author, char* title, int year)
     material->title = title;
     material->year = year;
     material->status = "free";
-}
-void changeMaterial(Material* material){
+    material->materialList = createStaticList(50, sizeof(Material));
+    material->personList = createStaticList(50, sizeof(Person));
 
+}
+
+void changeMaterialCode(Material* material, int code){
+    material->code = code;
 }
 
 void deleteMaterial(Material* material){

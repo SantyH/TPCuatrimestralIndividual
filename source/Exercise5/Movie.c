@@ -2,10 +2,11 @@
 // Created by Lucas on 30/5/2017.
 //
 
-#include <malloc.h>
+//#include <malloc.h>
 #include <time.h>
-#include <mem.h>
+//#include <mem.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "Movie.h"
 #include "Client.h"
 

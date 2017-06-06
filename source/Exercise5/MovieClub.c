@@ -2,7 +2,8 @@
 // Created by Lucas on 4/6/2017.
 //
 
-#include <malloc.h>
+//#include <malloc.h>
+#include <stdlib.h>
 #include "MovieClub.h"
 #include "Client.h"
 #include "Excess.h"
