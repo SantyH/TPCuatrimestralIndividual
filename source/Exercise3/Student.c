@@ -2,6 +2,7 @@
 // Created by Santiago Hazana on 5/31/17.
 //
 
+#include <stdlib.h>
 #include "Student.h"
 #include "Library.h"
 

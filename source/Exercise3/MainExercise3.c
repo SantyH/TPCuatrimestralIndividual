@@ -2,6 +2,8 @@
 // Created by Santiago Hazana on 6/6/17.
 //
 
+#include <printf.h>
+#include <memory.h>
 #include "Library.h"
 #include "../ScannerUtil/ScanUtil.h"
 #include "Person.h"
@@ -15,7 +17,7 @@
 
 int main(){
 
-    Library library = newLibrary();
+    Library* library = newLibrary();
     int operate = 1;
     while(operate) {
         printf("%s\n%s\n%s\n%s\n\n",
@@ -28,10 +30,10 @@ int main(){
 
         switch (command){
             case 1:
-                admin();
+                admin(library);
                 break;
             case 2:
-                user();
+                user(library);
                 break;
             case 0:
                 freeLibrary(library);
@@ -42,6 +44,8 @@ int main(){
         }
 
     }
+    freeLibrary(library);
+    return 0;
 }
 
 void createPerson(Library* library){
@@ -107,17 +111,17 @@ void admin(Library* library){
                 for (int i = 0; i < library->materials->size; ++i) {
                     goTo(library->materials, i);
                     printf("%i\n%s\n%s\n%s\n%s\n\n",
-                           (Material)getActual(library->materials)->code,
-                           (Material)getActual(library->materials)->type,
-                           (Material)getActual(library->materials)->title,
-                           (Material)getActual(library->materials)->author,
-                           (Material)getActual(library->materials)->status
+                           ((Material*)getActual(library->materials))->code,
+                           ((Material*)getActual(library->materials))->type,
+                           ((Material*)getActual(library->materials))->title,
+                           ((Material*)getActual(library->materials))->author,
+                           ((Material*)getActual(library->materials))->status
                     );
                 }
                 break;
             case 4:
                 printf("Enter person id to delete\n");
-                deletePerson(scanInt());
+                deletePerson(library, scanInt());
                 break;
             case 0:
                 operate = 0;
@@ -137,7 +141,7 @@ void user(Library* library){
     Person* person;
     for (int i = 0; i < library->persons->size; ++i) {
         goTo(library->persons, i);
-        if(id == (Person*)getActual(library->persons).enrollment)
+        if(id == ((Person*)getActual(library->persons))->enrollment)
             person = getActual(library->persons);
     }
 
@@ -161,18 +165,18 @@ void user(Library* library){
                 for (int i = 0; i < library->materials->size; ++i) {
                     goTo(library->materials, i);
                     printf("%i\n%s\n%s\n%s\n%s\n\n",
-                           (Material)getActual(library->materials)->code,
-                           (Material)getActual(library->materials)->type,
-                           (Material)getActual(library->materials)->title,
-                           (Material)getActual(library->materials)->author,
-                           (Material)getActual(library->materials)->status
+                           ((Material*)getActual(library->materials))->code,
+                           ((Material*)getActual(library->materials))->type,
+                           ((Material*)getActual(library->materials))->title,
+                           ((Material*)getActual(library->materials))->author,
+                           ((Material*)getActual(library->materials))->status
                     );
                 }
                 break;
             case 2:
                 printf("Enter material code:\n");
                 int codeMaterial = scanInt();
-                leaveMaterial(person, library, codeMaterial);
+                leaveMaterial(person, library);
                 break;
             case 3:
                 printf("You pay $ %d", toPay(person->loan));

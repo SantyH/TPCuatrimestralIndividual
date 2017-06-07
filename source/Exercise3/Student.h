@@ -7,9 +7,9 @@
 
 #include "Person.h"
 
-typedef struct student Student;
+typedef struct Student Student;
 
-struct student{
+struct Student{
     Person* person;
 };
 

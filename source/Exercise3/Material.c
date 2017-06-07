@@ -2,9 +2,8 @@
 // Created by Santiago Hazana on 5/31/17.
 //
 
+#include <stdlib.h>
 #include "Material.h"
-#include "LinkedList.h"
-#include "Person.h"
 
 Material* newMaterial(char* type, int code, char* author, char* title, int year){
     Material* material = malloc(sizeof(Material));
@@ -21,12 +20,10 @@ void changeMaterialCode(Material* material, int code){
     material->code = code;
 }
 
-void deleteMaterial(Material* material){
+void freeMaterial(Material* material){
     free(material->type);
-    free(material->code);
     free(material->author);
     free(material->title);
-    free(material->year);
     free(material->status);
     free(material);
 }

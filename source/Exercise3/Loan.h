@@ -5,9 +5,11 @@
 #ifndef TPCUATRIMESTRALINDIVIDUAL_LOAN_H
 #define TPCUATRIMESTRALINDIVIDUAL_LOAN_H
 
-typedef struct loan Loan;
+#include <time.h>
 
-struct loan{
+typedef struct Loan Loan;
+
+struct Loan{
     int code;
     int id;
     time_t startDate;

@@ -3,7 +3,7 @@ project(TPCuatrimestralIndividual)
 
 #add_subdirectory(Exercise1)
 add_subdirectory(Exercise2)
-#add_subdirectory(Exercise3)
+add_subdirectory(Exercise3)
 add_subdirectory(Exercise4)
 add_subdirectory(Exercise5)
 add_subdirectory(Structs)

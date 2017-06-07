@@ -5,14 +5,15 @@
 #ifndef TPCUATRIMESTRALINDIVIDUAL_LIBRARY_H
 #define TPCUATRIMESTRALINDIVIDUAL_LIBRARY_H
 
-#include "LinkedList.h"
+#include "Person.h"
+#include "../Structs/StaticList.h"
+#include "Material.h"
 
-typedef struct library Library;
+typedef struct Library Library;
 
-struct library{
+struct Library{
     StaticList* materials;
     StaticList* persons;
-
     int personsIdCount;
     int materialCount;
 };
@@ -22,6 +23,7 @@ void loadMaterial(Library* library, Material* material);
 void deleteMaterial(Library* library, int code);
 void loadPerson(Library* library, Person* person);
 void deletePerson(Library* library, int id);
+Material* getMaterial(Library* library, int code);
 void freeLibrary(Library* library);
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_LIBRARY_H

@@ -6,9 +6,11 @@
 #define TPCUATRIMESTRALINDIVIDUAL_MATERIAL_H
 
 
-typedef struct material Material;
+#include "../Structs/StaticList.h"
 
-struct material{
+typedef struct Material Material;
+
+struct Material{
     char* type;
     int code;
     char* author;
@@ -20,8 +22,8 @@ struct material{
 };
 
 Material* newMaterial(char* type, int code, char* author, char* title, int year);
-void deleteMaterial(int code);
-void changeMaterialCode(int code);
+void freeMaterial(Material* material);
+void changeMaterialCode(Material* material, int code);
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_MATERIAL_H
 

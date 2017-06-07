@@ -7,9 +7,9 @@
 
 #include "Material.h"
 
-typedef struct book Book;
+typedef struct Book Book;
 
-struct book{
+struct Book{
     Material* material;
     char* editorial;
 };

@@ -2,6 +2,8 @@
 // Created by Santiago Hazana on 5/31/17.
 //
 
+#include <stdlib.h>
+#include <time.h>
 #include "Loan.h"
 
 Loan* newLoan(int code, int id){
@@ -9,6 +11,7 @@ Loan* newLoan(int code, int id){
     loan->code = code;
     loan->id = id;
     loan->startDate = time(0);
+    return loan;
 }
 
 double toPay(Loan* loan){
@@ -23,8 +26,5 @@ double toPay(Loan* loan){
 }
 
 void freeLoan(Loan* loan){
-    free(loan->code);
-    free(loan->startDate);
-    free(loan->id);
     free(loan);
 }
