@@ -2,11 +2,12 @@
 // Created by Santiago Hazana on 5/31/17.
 //
 
+#include <stdlib.h>
 #include "Book.h"
 
 Book* newBook(char* type, int code, char* author, char* title, int year, char* editorial){
     Book* book = malloc(sizeof(Book));
-    book->editorial = editoral;
+    book->editorial = editorial;
     book->material = newMaterial(type, code, author, title, year);
     return book;
 }

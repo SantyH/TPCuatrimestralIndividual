@@ -6,14 +6,16 @@
 #define TPCUATRIMESTRALINDIVIDUAL_TEACHER_H
 
 #include "Person.h"
+#include "Library.h"
 
-typedef struct teacher Teacher;
+typedef struct Teacher Teacher;
 
-struct teacher{
+struct Teacher{
     Person* person;
 };
 
-void teacherTakeMaterial();
-void teacherLeaveMaterial();
+Teacher* newTeacher(char* personType, char* name, char* surName, char* email, int phone, int enrollment);
+void teacherTakeMaterial(Teacher* teacher, Library* library ,int code);
+void teacherLeaveMaterial(Teacher* teacher, Library* library);
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_TEACHER_H

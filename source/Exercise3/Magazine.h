@@ -7,15 +7,15 @@
 
 #include "Material.h"
 
-typedef struct magazine Magazine;
+typedef struct Magazine Magazine;
 
-struct magazine{
+struct Magazine{
     Material* material;
 };
 
 Magazine* newMagazine(char* type, int code, char* author, char* title, int year);
-void freeMagazine();
-void changeMagazine();
+void freeMagazine(Magazine* magazine);
+void changeMagazine(Magazine* magazine, int code);
 
 
 

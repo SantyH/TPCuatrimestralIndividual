@@ -2,14 +2,15 @@
 // Created by Santiago Hazana on 5/31/17.
 //
 
+#include <stdlib.h>
+#include <printf.h>
 #include "Library.h"
-#include "Material.h"
-#include "Person.h"
+
 
 Library* newLibrary(){
     Library* library = malloc(sizeof(Library));
-    library->materials = createLinkedList(10, sizeof(Material*));
-    library->persons = createLinkedList(10, sizeof(Person*));
+    library->materials = createStaticList(10, sizeof(Material*));
+    library->persons = createStaticList(10, sizeof(Person*));
     library->materialCount = 0;
     library->personsIdCount = 0;
 }
@@ -22,7 +23,8 @@ void loadMaterial(Library* library, Material* material){
 
 void deleteMaterial(Library* library, int code){
     for (int i = 0; i < library->materials->size; ++i) {
-        if((Material)goTo(library->materials, i)->code == code){
+        goTo(library->materials, i);
+        if(((Material*)getActual(library->materials))->code == code){
             removeS(library->materials);
             printf("Material deleted\n");
             return;
@@ -39,7 +41,8 @@ void loadPerson(Library* library, Person* person){
 
 void deletePerson(Library* library, int id){
     for (int i = 0; i < library->persons->size; ++i) {
-        if((Person)goTo(library->persons, i)->code == id){
+        goTo(library->persons, i);
+        if(((Person*)getActual(library->persons))->enrollment == id){
             removeS(library->persons);
             printf("Person deleted");
             return;
@@ -48,9 +51,17 @@ void deletePerson(Library* library, int id){
     printf("No person with such id");
 }
 
+Material * getMaterial(Library *library, int code){
+    for (int i = 0; i < library->materials->size; ++i) {
+        goTo(library->materials, i);
+        if(code == ((Material*)getActual(library->materials))->code)
+            return getActual(library->materials);
+    }
+    printf("Material not found\n");
+    return NULL;
+}
+
 void freeLibrary(Library* library){
-    free(library->personsIdCount);
-    free(library->materialCount);
     freeStaticList(library->persons);
     freeStaticList(library->materials);
     free(library);

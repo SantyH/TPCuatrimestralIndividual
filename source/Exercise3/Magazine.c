@@ -2,6 +2,7 @@
 // Created by Santiago Hazana on 5/31/17.
 //
 
+#include <stdlib.h>
 #include "Magazine.h"
 
 
@@ -13,13 +14,10 @@ Magazine* newMagazine(char* type, int code, char* author, char* title, int year)
 
 void freeMagazine(Magazine* magazine){
     free(magazine->material->type);
-    free(magazine->material->code);
     free(magazine->material->author);
     free(magazine->material->title);
-    free(magazine->material->year);
     free(magazine->material->status);
     free(magazine->material);
-    free(magazine->editorial);
     free(magazine);
 }
 

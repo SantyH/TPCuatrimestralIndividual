@@ -5,9 +5,13 @@
 #ifndef TPCUATRIMESTRALINDIVIDUAL_PERSON_H
 #define TPCUATRIMESTRALINDIVIDUAL_PERSON_H
 
-typedef struct person Person;
+#include "Loan.h"
+#include "Material.h"
+#include "Library.h"
 
-struct person{
+typedef struct Person Person;
+
+struct Person{
     char* personType;
     char* name;
     char* surName;

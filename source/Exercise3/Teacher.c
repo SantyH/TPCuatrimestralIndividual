@@ -2,7 +2,10 @@
 // Created by Santiago Hazana on 5/31/17.
 //
 
+#include <stdlib.h>
 #include "Teacher.h"
+#include "Student.h"
+#include "Library.h"
 
 Teacher* newTeacher(char* personType, char* name, char* surName, char* email, int phone, int enrollment){
     Teacher* teacher = malloc(sizeof(Student));
