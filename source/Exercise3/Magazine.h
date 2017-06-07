@@ -13,8 +13,8 @@ struct magazine{
     Material* material;
 };
 
-Magazine* newMagazine();
-void unregisterMagazine();
+Magazine* newMagazine(char* type, int code, char* author, char* title, int year);
+void freeMagazine();
 void changeMagazine();
 
 

@@ -14,9 +14,7 @@ Material* newMaterial(char* type, int code, char* author, char* title, int year)
     material->title = title;
     material->year = year;
     material->status = "free";
-    material->materialList = createStaticList(50, sizeof(Material));
-    material->personList = createStaticList(50, sizeof(Person));
-
+    return material;
 }
 
 void changeMaterialCode(Material* material, int code){

@@ -16,11 +16,12 @@ struct person{
     int numberOfBooks;
     double toPay;
     int enrollment;
-    Material material;
+    Material* material;
+    Loan* loan;
 };
 
 void newPerson(char* personType, char* name, char* surName, char* email, int phone, int enrollment);
-void takeMaterial(int code);
-void leaveMaterial();
+void takeMaterial(Person* person, Library* library, int code);
+void leaveMaterial(Person* person, Library* library);
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_PERSON_H

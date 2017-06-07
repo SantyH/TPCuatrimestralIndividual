@@ -15,15 +15,15 @@ void ClientHotelMain(ClientHotel *client, Receptionist* receptionist,char* hotel
 int main(){
     printf("%s\n","Insert Hotel's name: ");
     char* hotelName;
-    hotelName =  scanArrayOfChar();
+    hotelName =  scanChar();
     StaticList* clients = createStaticList(5, sizeof(ClientHotel));
     char* name;
     char* surname;
     int DNI;
 
-    printf("%s\n","Insert name, surname amd DNI for receptionist in charge:");
-    name = scanArrayOfChar();
-    surname= scanArrayOfChar();
+    printf("%s\n","Insert name, surname and DNI for receptionist in charge:");
+    name = scanChar();
+    surname= scanChar();
     DNI=scanInt();
     Receptionist* receptionist = createReceptionist(name,surname,DNI);
 
@@ -54,8 +54,8 @@ int main(){
                 }
                 printf("%s\n %s\n","DNI not found! Initialize new Client:",
                 "Insert name, surname and amount of Cash.");
-                name = scanArrayOfChar();
-                surname = scanArrayOfChar();
+                name = scanChar();
+                surname = scanChar();
                 double amount = scanInt();
                 goBack(clients);
                 addNext(clients, createClientHotel(name,surname,DNI,amount));
@@ -172,7 +172,7 @@ void HotelAdministrationMain(Receptionist* receptionist,char *name) {
         switch (command) {
             case 1:
                 printf("%s\n","Insert your room type and price:");
-                roomType = scanArrayOfChar();
+                roomType = scanChar();
                 price = scanInt();
                 goBack(receptionist->rooms);
                 addNext(receptionist->rooms, createRoom(roomType, receptionist->rooms->size + 1, price));

@@ -8,8 +8,8 @@
 
 Library* newLibrary(){
     Library* library = malloc(sizeof(Library));
-    library->materials = createLinkedList(10, sizeof(Material));
-    library->persons = createLinkedList(10, sizeof(Person));
+    library->materials = createLinkedList(10, sizeof(Material*));
+    library->persons = createLinkedList(10, sizeof(Person*));
     library->materialCount = 0;
     library->personsIdCount = 0;
 }

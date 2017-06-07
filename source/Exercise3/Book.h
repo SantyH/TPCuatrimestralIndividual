@@ -14,8 +14,8 @@ struct book{
     char* editorial;
 };
 
-Book* newBook(char* editorial);
-void freeBook(char* editorial);
-void changeBook();
+Book* newBook(char* type, int code, char* author, char* title, int year, char* editorial);
+void freeBook(Book* book);
+void changeBookCode(Book* book, int code);
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_BOOK_H

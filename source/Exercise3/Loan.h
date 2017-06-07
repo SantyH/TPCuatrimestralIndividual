@@ -10,10 +10,11 @@ typedef struct loan Loan;
 struct loan{
     int code;
     int id;
-    char* startDate;
-    char* endDate;
+    time_t startDate;
 };
 
-double toPay();
+Loan* newLoan(int code, int id);
+double toPay(Loan* loan);
+void freeLoan(Loan* loan);
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_LOAN_H

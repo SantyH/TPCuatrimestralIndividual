@@ -4,14 +4,11 @@
 
 #include "Book.h"
 
-Book* newBook(char* editorial, char* type, int code, char* author, char* title, int year){
+Book* newBook(char* type, int code, char* author, char* title, int year, char* editorial){
     Book* book = malloc(sizeof(Book));
     book->editorial = editoral;
-    book->material->type = type;
-    book->material->code = code;
-    book->material->author = author;
-    book->material->title = title;
-    book->material->year = year;
+    book->material = newMaterial(type, code, author, title, year);
+    return book;
 }
 
 void freeBook(Book* book){
@@ -26,6 +23,6 @@ void freeBook(Book* book){
     free(book);
 }
 
-void changeBook(Book* book, int code){
+void changeBookCode(Book* book, int code){
     book->material->code = code;
 }

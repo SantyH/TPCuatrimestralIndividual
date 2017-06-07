@@ -2,9 +2,11 @@
 // Created by Lucas on 6/6/2017.
 //
 
-#include <malloc.h>
+//#include <malloc.h>
 #include <time.h>
-#include <mem.h>
+//#include <mem.h>
+#include <stdlib.h>
+#include <memory.h>
 #include "Invoice.h"
 
 Invoice* createInvoice(int invoiceNumber,char* hotelName, char* clientName,char* clientSurname ,int clientDNI, double amountToPay){

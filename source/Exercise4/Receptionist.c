@@ -2,8 +2,9 @@
 // Created by Lucas on 6/6/2017.
 //
 
-#include <malloc.h>
+//#include <malloc.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "memory.h"
 #include "Receptionist.h"
 #include "Reservation.h"

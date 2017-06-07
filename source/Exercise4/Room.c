@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "stdlib.h"
-#include "memory.h"
+//#include "memory.h"
 #include "Room.h"
 Room* createRoom(char* roomType, int roomNumber, double price){
     Room* room = malloc(sizeof(Room));

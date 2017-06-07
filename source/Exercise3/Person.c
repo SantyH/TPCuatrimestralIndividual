@@ -13,19 +13,19 @@ void newPerson(char* personType, char* name, char* surName, char* email, int pho
     person->surName = surName;
     person->email = email;
     person->phone = phone;
-    person->numberOfBooks = 0;
-    person->toPay = 0;
     person->enrollment = enrollment;
-    person->material = NULL;
 }
 
 
 void takeMaterial(Person* person, Library* library, int code){
     person->material = library.getMaterial(code);
+    person->loan = newLoan(person->material->code, person->enrollment);
 }
 
 
 void leaveMaterial(Person* person, Library* library){
     addNext(library->materialList, person->material);
     person->material = NULL;
+    person->toPay = 0;
+    freeLoan();
 }

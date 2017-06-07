@@ -12,6 +12,7 @@ typedef struct library Library;
 struct library{
     StaticList* materials;
     StaticList* persons;
+
     int personsIdCount;
     int materialCount;
 };

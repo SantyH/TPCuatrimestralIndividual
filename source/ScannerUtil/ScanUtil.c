@@ -34,11 +34,11 @@ double scanDouble(){
     int loop = 1;
     while(loop) {
         if (fgets(line, sizeof(line), stdin)) {
-            if (1 == sscanf(line, "%f", &i)) {
+            if (1 == sscanf(line, "%d", &i)) {
                 loop = 0;
             }
             else {
-                printf("Please enter an double\n");
+                printf("Please enter a double\n");
             }
         }
     }
@@ -78,8 +78,21 @@ char* scanArrayOfChar(){
     while(1) {
         if (fgets(line, bufferSize, stdin)) {
             trim(line);
-            if(strlen(line) != 0) return line;
+            if(strlen(line) != 0) {
+                toLowerCase(line);
+                return line;
+            }
         }
         printf("Please enter a string\n");
+    }
+}
+
+void toLowerCase(char* string){
+    int i = 0;
+
+    while( string[i] )
+    {
+        putchar(tolower(string[i]));
+        i++;
     }
 }

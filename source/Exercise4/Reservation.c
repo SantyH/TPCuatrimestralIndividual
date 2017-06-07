@@ -2,8 +2,9 @@
 // Created by Lucas on 6/6/2017.
 //
 
-#include <malloc.h>
+//#include <malloc.h>
 #include <time.h>
+#include <stdlib.h>
 #include "Reservation.h"
 
 Reservation* createResearvation(char* clientName, char* clientSurname, int clientDNI, int roomNumber, int numberOfDays){
