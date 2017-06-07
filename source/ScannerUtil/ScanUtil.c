@@ -28,13 +28,19 @@ int scanInt(){
     return i;
 }
 
+/*
+ * Function: scanDouble
+ * Description: takes double input from the user, will loop until a number is entered.
+ * Returns: inputted double.
+ */
+
 double scanDouble(){
     char line[256];
-    int i = -1;
+    double i = -1;
     int loop = 1;
     while(loop) {
         if (fgets(line, sizeof(line), stdin)) {
-            if (1 == sscanf(line, "%d", &i)) {
+            if (1 == sscanf(line, "%lf", &i)) {
                 loop = 0;
             }
             else {
@@ -79,7 +85,7 @@ char* scanArrayOfChar(){
         if (fgets(line, bufferSize, stdin)) {
             trim(line);
             if(strlen(line) != 0) {
-                toLowerCase(line);
+//                toLowerCase(line);
                 return line;
             }
         }

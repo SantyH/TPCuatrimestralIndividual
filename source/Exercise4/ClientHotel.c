@@ -21,7 +21,7 @@ void makeReservation(ClientHotel* client,Receptionist* receptionist,int roomNumb
     for (int i = 0; i < receptionist->rooms->size; ++i) {
         goTo(receptionist->rooms,i);
         if (((Room*)getActual(receptionist->rooms))->roomNumber==roomNumber &&
-                client->wallet >= ((Room*)getActual(receptionist->rooms))->price) {
+                 ((Room*)getActual(receptionist->rooms))->price <= client->wallet) {
             goBack(receptionist->reservations);
             addNext(receptionist->reservations,
                     createResearvation(client->name, client->surname, client->DNI, ((Room*)getActual(receptionist->rooms))->roomNumber, days));

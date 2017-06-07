@@ -3,7 +3,8 @@
 #define TPCUAT_GRUPO11_SCANUTIL_H
 
 int scanInt();
-char* scanChar();
+double scanDouble();
+char* scanArrayOfChar();
 void toLowerCase(char* string);
 
 #endif //TPCUAT_GRUPO11_SCANUTIL_H

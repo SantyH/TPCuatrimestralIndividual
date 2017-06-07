@@ -4,7 +4,6 @@
 
 #include <stdio.h>
 #include <memory.h>
-//#include <mem.h>
 #include "MovieClub.h"
 #include "../ScannerUtil/ScanUtil.h"
 #include "Movie.h"
@@ -18,7 +17,6 @@ void ClientMain(MovieClub* movieClub, Client* client);
 
 int main(){
     MovieClub* movieClub = createMovieClub();
-
     char* name;
     char* surname;
     int DNI;
@@ -92,13 +90,13 @@ void MovieClubMain(MovieClub* movieClub){
        int command = 0;
        command = scanInt();
        char* movieTitle;
-       int price;
+       double price;
        switch (command) {
            case 1:
                printf("%s\n", "Insert movieTitle and price for the Movie: ");
                goBack(movieClub->movies);
                movieTitle = scanArrayOfChar();
-               price = scanInt();
+               price = scanDouble();
                Movie* movie = createMovie(movieTitle,price);
                addNext(movieClub->movies, movie);
                break;
@@ -109,7 +107,7 @@ void MovieClubMain(MovieClub* movieClub){
                    goTo(movieClub->movies, i);
                    if (strcmp(((Movie *) getActual(movieClub->movies))->title, movieTitle) ==0) {
                        printf("%s%s\n", "Insert new price for the Movie: ",movieTitle);
-                       price=scanInt();
+                       price=scanDouble();
                        changePrice((Movie *) getActual(movieClub->movies), price);
                        break;
                    }
@@ -135,7 +133,7 @@ void MovieClubMain(MovieClub* movieClub){
         );
         int command=0;
         command = scanInt();
-        int amount;
+        double amount;
         char* name;
         char* surname;
         int DNI;
@@ -148,7 +146,7 @@ void MovieClubMain(MovieClub* movieClub){
                 Client* client = createClient(name,surname,DNI);
                 registerClient(movieClub,client);
                 printf("%s\n","Insert initial amount for client's MovieCard:");
-                amount=scanInt();
+                amount=scanDouble();
                 generateMovieCard(client,amount);
                 break;
             case 2:
@@ -157,7 +155,7 @@ void MovieClubMain(MovieClub* movieClub){
                 for (int i = 0; i < movieClub->clients->size; ++i) {
                     if(((Client*) getActual(movieClub->clients))->DNI==DNI){
                         printf("%s\n","Insert amount: ");
-                        amount=scanInt();
+                        amount=scanDouble();
                         increaseAmountMovieCard(((Client*) getActual(movieClub->clients))->movieCard,amount);
                         break;
                     }
@@ -195,12 +193,12 @@ void ClientMain(MovieClub* movieClub, Client* client){
                 break;
             case 2:
                 printf("%s\n","Insert Movie title: ");
-                movieTitle = scanChar();
+                movieTitle = scanArrayOfChar();
                 returnMovie(client,movieClub,movieTitle);
                 break;
             case 3:
                 printf("%s\n","Insert Movie title: ");
-                movieTitle = scanChar();
+                movieTitle = scanArrayOfChar();
                 if ( movieClub->movies->size>0 && checkAvailableMovie(movieClub->movies,movieTitle)){
                     Movie* movie = NULL;
                     for (int i = 0; i < movieClub->movies->size; ++i) {
@@ -209,7 +207,7 @@ void ClientMain(MovieClub* movieClub, Client* client){
                          movie= (Movie*) getActual(movieClub->movies);
                         }
                     }
-                    printf("%s\n","Set any number if you want to rent this movie, else zero '0'.");
+                    printf("%s\n","Set any number if you want to rent this movie, else insert zero '0'.");
                     int rentBoolean = scanInt();
                     if(rentBoolean){
                         rentMovie(movie,client->movieCard->idMovieCard,client->movieCard->totalAmount);

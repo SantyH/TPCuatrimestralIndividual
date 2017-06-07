@@ -15,15 +15,15 @@ void ClientHotelMain(ClientHotel *client, Receptionist* receptionist,char* hotel
 int main(){
     printf("%s\n","Insert Hotel's name: ");
     char* hotelName;
-    hotelName =  scanChar();
+    hotelName =  scanArrayOfChar();
     StaticList* clients = createStaticList(5, sizeof(ClientHotel));
     char* name;
     char* surname;
     int DNI;
 
     printf("%s\n","Insert name, surname and DNI for receptionist in charge:");
-    name = scanChar();
-    surname= scanChar();
+    name = scanArrayOfChar();
+    surname= scanArrayOfChar();
     DNI=scanInt();
     Receptionist* receptionist = createReceptionist(name,surname,DNI);
 
@@ -54,8 +54,8 @@ int main(){
                 }
                 printf("%s\n %s\n","DNI not found! Initialize new Client:",
                 "Insert name, surname and amount of Cash.");
-                name = scanChar();
-                surname = scanChar();
+                name = scanArrayOfChar();
+                surname = scanArrayOfChar();
                 double amount = scanInt();
                 goBack(clients);
                 addNext(clients, createClientHotel(name,surname,DNI,amount));
@@ -135,7 +135,7 @@ void ClientHotelMain(ClientHotel *client, Receptionist* receptionist, char* hote
                 break;
             case 4:
                 printf("%s\n","Increase client's wallet: ");
-                double amount = scanInt();
+                double amount = scanDouble();
                 increaseWallet(client, amount);
             case 5:
                 for (int k = 0; k < receptionist->rooms->size; ++k) {
@@ -172,10 +172,11 @@ void HotelAdministrationMain(Receptionist* receptionist,char *name) {
         switch (command) {
             case 1:
                 printf("%s\n","Insert your room type and price:");
-                roomType = scanChar();
-                price = scanInt();
+                roomType = scanArrayOfChar();
+                price = scanDouble();
                 goBack(receptionist->rooms);
-                addNext(receptionist->rooms, createRoom(roomType, receptionist->rooms->size + 1, price));
+                Room* room = createRoom(roomType, receptionist->rooms->size + 1, price);
+                addNext(receptionist->rooms, room);
                 break;
             case 2:
                 goBack(receptionist->rooms);

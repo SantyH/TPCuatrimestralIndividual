@@ -24,3 +24,4 @@ int checkRoom(Receptionist* receptionist,int number);
 void checkIn(Receptionist* receptionist,char* hotelName, char* clientName ,char* clientSurname, int clientDNI, int roomNumber);
 void freeReceptionist(Receptionist* receptionist);
 #endif //TPCUATRIMESTRALINDIVIDUAL_RECEPTIONIST_H
+
