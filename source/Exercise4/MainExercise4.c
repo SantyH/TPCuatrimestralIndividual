@@ -42,7 +42,7 @@ int main(){
                 printf("%s\n","Insert your DNI:");
                 DNI = scanInt();
                 for(int i=0; i<clients->size; ++i){
-                    if(((ClientHotel*) getActual(clients))->DNI == DNI){
+                    if(DNI == ((ClientHotel*) getActual(clients))->DNI){
                         if(receptionist->rooms->size>0){
                             ClientHotelMain(((ClientHotel*) getActual(clients)), receptionist,hotelName);
                         }
@@ -86,7 +86,7 @@ void ClientHotelMain(ClientHotel *client, Receptionist* receptionist, char* hote
     int loop=1;
     int roomNumber;
     while (loop){
-        printf("\n %s\n %s\n %s\n %s\n %s\n  %s\n %s\n\n",
+        printf("\n %s\n %s\n %s\n %s\n %s\n %s\n %s\n\n",
                "CLIENT MENU",
                "1) Make reservation.",
                "2) Check in.",
@@ -175,7 +175,8 @@ void HotelAdministrationMain(Receptionist* receptionist,char *name) {
                 roomType = scanArrayOfChar();
                 price = scanDouble();
                 goBack(receptionist->rooms);
-                Room* room = createRoom(roomType, receptionist->rooms->size + 1, price);
+                Room* room;
+                room = createRoom(roomType, receptionist->rooms->size + 1, price);
                 addNext(receptionist->rooms, room);
                 break;
             case 2:
