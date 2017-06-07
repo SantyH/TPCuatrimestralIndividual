@@ -18,10 +18,10 @@ struct library{
 };
 
 Library* newLibrary();
-void loadMaterial();
-void deleteMaterial(int code);
-void loadPerson();
-void deletePerson(int id);
-void freeLibrary();
+void loadMaterial(Library* library, Material* material);
+void deleteMaterial(Library* library, int code);
+void loadPerson(Library* library, Person* person);
+void deletePerson(Library* library, int id);
+void freeLibrary(Library* library);
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_LIBRARY_H
