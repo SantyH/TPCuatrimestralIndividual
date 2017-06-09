@@ -27,7 +27,7 @@ void giveInformation(Receptionist* receptionist) {
     if (receptionist->rooms->size>0) {
         for (int i = 0; i < receptionist->rooms->size; ++i) {
             goTo(receptionist->rooms,i);
-            printf("%s%s\n %s%d\n %s%f\n", "Room type: ", ((Room *) getActual(receptionist->rooms))->roomType,
+            printf("%s%s\n %s%d\n %s%f\n", "Room's type: ", ((Room *) getActual(receptionist->rooms))->roomType,
                    "Room's number: ", ((Room *) getActual(receptionist->rooms))->roomNumber,
                    "Room's price: ", ((Room *) getActual(receptionist->rooms))->price);
         }
@@ -35,8 +35,9 @@ void giveInformation(Receptionist* receptionist) {
     if (receptionist->invoices->size>0) {
         for (int j = 0; j < receptionist->invoices->size; ++j) {
             goTo(receptionist->invoices,j);
-            printf("%s%s\n %s%s\n %s%d\n",
+            printf("%s%s\n %s%d\n %s%s\n %s%d\n",
                    "Date: ", ((Invoice *) getActual(receptionist->invoices))->invoiceDate,
+                   "Invoice Number: ", ((Invoice *) getActual(receptionist->invoices))->invoiceNumber,
                    "Invoice State: ", ((Invoice *) getActual(receptionist->invoices))->payState,
                    "Client DNI: ", ((Invoice *) getActual(receptionist->invoices))->clientDNI
             );

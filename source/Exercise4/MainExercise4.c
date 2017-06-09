@@ -113,11 +113,15 @@ void ClientHotelMain(ClientHotel *client, Receptionist* receptionist, char* hote
                 printf("%s\n","Insert room number for check in: ");
                 roomNumber=scanInt();
                 checkIn(receptionist,hotelName,client->name,client->surname,client->DNI,roomNumber);
+                char operation[] = "Invalid Operation!";
                 for (int i = 0; i < receptionist->invoices->size; ++i) {
                     goTo(receptionist->invoices,i);
                     if(((Invoice*)getActual(receptionist->invoices))->clientDNI == client->DNI &&
                             strcmp (((Invoice*)getActual(receptionist->invoices))->payState,"NO PAYMENT")==0){
                         receptionist->income += payRoom(((Invoice*)getActual(receptionist->invoices)),client->wallet);
+
+                        printf("%s\n", ((Invoice*)getActual(receptionist->invoices))->payState);
+
                         for (int j = 0; j < receptionist->rooms->size; ++j) {
                             goTo(receptionist->rooms,j);
                             if ( ((Room*)getActual(receptionist->rooms))->roomNumber == roomNumber ){
@@ -126,9 +130,9 @@ void ClientHotelMain(ClientHotel *client, Receptionist* receptionist, char* hote
                                 break;
                             }
                         }
+                        break;
                     }
                 }
-                printf("%s\n", "Invalid check in operation!");
                 break;
             case 3:
                 askForInformation(receptionist->rooms);

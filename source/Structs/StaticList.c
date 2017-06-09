@@ -122,8 +122,9 @@ int getPosition(StaticList* list){
 */
 
 void goFirst(StaticList* list){
-
-    list->current = 0;
+    if(isEmpty(list)==1) {
+        list->current = 0;
+    }
 }
 
 /*
@@ -135,8 +136,9 @@ void goFirst(StaticList* list){
 */
 
 void goBack(StaticList* list){
-
-    list->current = list->size - 1;
+    if(isEmpty(list)==1) {
+        list->current = list->size - 1;
+    }
 }
 
 /*

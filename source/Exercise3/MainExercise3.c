@@ -4,6 +4,7 @@
 
 #include <printf.h>
 #include <memory.h>
+#include <stdio.h>
 #include "Library.h"
 #include "../ScannerUtil/ScanUtil.h"
 #include "Person.h"
@@ -58,12 +59,12 @@ void createPerson(Library* library){
            "Phone"
     );
 
-    char* personType = scanChar();
+    char* personType = scanArrayOfChar();
 
     if(strcmp(personType, "student"))
-        loadPerson(library, newStudent(personType, scanChar(), scanChar(), scanChar(), scanInt(), library->personsIdCount));
+        loadPerson(library, newStudent(personType, scanArrayOfChar(), scanArrayOfChar(), scanArrayOfChar(), scanInt(), library->personsIdCount));
     else
-        loadPerson(library, newTeacher(personType, scanChar(), scanChar(), scanChar(), scanInt(), library->personsIdCount));
+        loadPerson(library, newTeacher(personType, scanArrayOfChar(), scanArrayOfChar(), scanArrayOfChar(), scanInt(), library->personsIdCount));
 }
 
 void createMaterial(Library* library){
@@ -74,13 +75,13 @@ void createMaterial(Library* library){
            "Title",
            "Year"
     );
-    char* materialType = scanChar();
+    char* materialType = scanArrayOfChar();
 
     if(strcmp(materialType, "book")){
         printf("Editorial\n\n");
-        loadMaterial(library, newBook(scanChar(), library->materialCount, scanChar(), scanChar(), scanInt(), scanChar()));
+        loadMaterial(library, newBook(scanArrayOfChar(), library->materialCount, scanArrayOfChar(), scanArrayOfChar(), scanInt(), scanArrayOfChar()));
     }else{
-        loadMaterial(library, newMagazine(scanChar(), library->materialCount, scanChar(), scanChar(), scanInt()));
+        loadMaterial(library, newMagazine(scanArrayOfChar(), library->materialCount, scanArrayOfChar(), scanArrayOfChar(), scanInt()));
     }
 }
 

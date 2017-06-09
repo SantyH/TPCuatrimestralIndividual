@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "stdlib.h"
-//#include "memory.h"
+#include "memory.h"
 #include "Room.h"
 Room* createRoom(char* roomType, int roomNumber, double price){
     Room* room = malloc(sizeof(Room));
@@ -24,15 +24,14 @@ double leaveRoom(Room* room){
     time_t currentTime = time(NULL);
     long timeStampToday = currentTime;
 
-    double secondsDiff =0;
-    if(room->expireDay < timeStampToday){
+    if( strcmp(room->occupate,"OCCUPIED")==0 && room->expireDay < timeStampToday){
 
         double extraDays = (difftime(room->expireDay, timeStampToday))/ 86400 ;
 
         room->occupate = "FREE";
         room->clientDNIReservation=0;
 
-        return extraDays*room->price;
+        return extraDays * room->price;
     }
     room->clientDNIReservation=0;
     room->occupate = "FREE";
