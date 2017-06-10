@@ -669,7 +669,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+id: String",
+											"text": "+idMovieCard: String",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -811,7 +811,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+addToBag(int id)",
+											"text": "+addToBag(int idMovieCard)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -1106,7 +1106,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+id: int",
+											"text": "+idMovieCard: int",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -1512,7 +1512,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+id: int",
+											"text": "+idMovieCard: int",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2672,7 +2672,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+id: String",
+											"text": "+idMovieCard: String",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -3020,7 +3020,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+id: String",
+											"text": "+idMovieCard: String",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -7516,7 +7516,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFcFD1fH18ZxGU="
 							},
-							"name": "id",
+							"name": "idMovieCard",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -7597,7 +7597,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFcUVWYI8oIu1g="
 									},
-									"name": "int id",
+									"name": "int idMovieCard",
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
@@ -7772,7 +7772,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFcFEFVM19pwCw="
 							},
-							"name": "id",
+							"name": "idMovieCard",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -7859,7 +7859,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFcFE6FvV+r0BM="
 							},
-							"name": "id",
+							"name": "idMovieCard",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -8273,7 +8273,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFcFFQR9mCBhHo="
 							},
-							"name": "id",
+							"name": "idMovieCard",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -8371,7 +8371,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFcFFVznWD960o="
 							},
-							"name": "id",
+							"name": "idMovieCard",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,

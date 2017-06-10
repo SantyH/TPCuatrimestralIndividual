@@ -13,5 +13,6 @@ typedef struct Product{
 }Product;
 
 Product* createProduct(char* name, char* code, double retailPrice);
-void freeProduct();
+void showInformation(Product* product);
+void freeProduct(Product* product);
 #endif //TPCUATRIMESTRALINDIVIDUAL_PRODUCT_H

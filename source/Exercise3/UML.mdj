@@ -8416,7 +8416,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFcT1ZVnd4ddy8="
 									},
-									"name": "int id",
+									"name": "int idMovieCard",
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
