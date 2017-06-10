@@ -18,9 +18,8 @@ StaticList* contactManufacturer(Provider* provider,char* code, int quantity){
     StaticList* products = createStaticList(quantity,sizeof(Product));
     for (int i = 0; i < provider->manufacturers->size; ++i) {
         goTo(provider->manufacturers,i);
-        if( strcmp( (((Manufacturer*) getActual(provider->manufacturers))->productCode),code)){
-            makeProducts(((Manufacturer*) getActual(provider->manufacturers)),products,code,quantity);
-        }
+        makeProducts(((Manufacturer*) getActual(provider->manufacturers)),products,code,quantity);
+        
     }
     return products;
 }

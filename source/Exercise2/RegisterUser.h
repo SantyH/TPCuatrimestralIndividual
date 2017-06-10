@@ -16,7 +16,7 @@ typedef struct RegisterUser{
 }RegisterUser;
 
 RegisterUser* createRegisterUser(char* name, int dni, char* address, int phone, char* location, char* province, char* country,char* postCode);
-void buyProduct(RegisterUser* registerUser, Product* product);
+void buyProduct(RegisterUser* registerUser, char* code, StaticList* accessories, StaticList* cameras);
 void increaseWallet(RegisterUser* registerUser, double amount);
 void* freeRegisterUser(RegisterUser* registerUser);
 

@@ -12,7 +12,7 @@ typedef struct Camera{
     int megapixels;
     int LCDScreen;
     int opticalZoom;
-    char* tipo;
+    char* type;
 }Camera;
 Camera* createCamera(char* name, char* code, double retailPrice,int megapixels, int LCDScreen, int opticalZoom, char* tipo);
 void showCamera(Camera* camera);

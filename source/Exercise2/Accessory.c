@@ -4,12 +4,13 @@
 
 #include <malloc.h>
 #include <stdio.h>
+#include <memory.h>
 #include "Accessory.h"
 
 Accessory* createAccessory(char* name, char* code, double retailPrice, char* type, char* comments){
     Accessory* accessory = malloc(sizeof(Accessory));
 
-    accessory->product=createProduct(name,code,retailPrice);
+    accessory->product=createProduct(name,strcat("A-",code),retailPrice);
     accessory->type=type;
     accessory->comments;
 

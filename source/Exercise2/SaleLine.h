@@ -12,6 +12,6 @@ typedef struct SaleLine{
     StaticList* accessories;
 }SaleLine;
 SaleLine* createSaleLine();
-void showProducts();
+void showProducts(SaleLine* saleLine);
 void freeSaleLine(SaleLine* saleLine);
 #endif //TPCUATRIMESTRALINDIVIDUAL_SALELINE_H

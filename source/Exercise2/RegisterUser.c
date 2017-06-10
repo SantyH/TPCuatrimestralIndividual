@@ -4,8 +4,12 @@
 
 #include <malloc.h>
 #include <stdio.h>
+#include <mem.h>
 #include "RegisterUser.h"
 #include "Sale.h"
+#include "Accessory.h"
+#include "Camera.h"
+#include "SaleLine.h"
 
 RegisterUser* createRegisterUser(char* name, int dni, char* address, int phone, char* location, char* province, char* country,char* postCode){
     RegisterUser* registerUser = malloc(sizeof(RegisterUser));
@@ -17,24 +21,50 @@ RegisterUser* createRegisterUser(char* name, int dni, char* address, int phone, 
     return registerUser;
 
 }
-void buyProduct(RegisterUser* registerUser, Product* product){
-    double amount = registerUser->wallet - product->retailPrice;
-    if(amount>-1){
-        for (int i = 0; i < registerUser->sales->size; ++i) {
-            goTo(registerUser->sales,i);
-            if( (()))
+void buyProduct(RegisterUser* registerUser, char* code, StaticList* accessories,StaticList* cameras){
+    char sub[2];
+    strncpy(sub, code, 2);
+    if(strcmp("A-",sub)==0) {
+        goBack(registerUser->sales);
+        addNext(registerUser->sales,createSale());
+        for (int i = 0; i < accessories->size; ++i) {
+            goTo(accessories, i);
+            double amount = registerUser->wallet - ((Accessory *) getActual(accessories))->product->retailPrice;
+            if(  strcmp(((Accessory *) getActual(accessories))->product->code,code)==0 &&  amount > -1){
+                registerUser->wallet = amount;
+                goBack( ((SaleLine*) ((Sale*) getActual(registerUser->sales))->saleLine)->accessories);
+                addNext( ((SaleLine*) ((Sale*) getActual(registerUser->sales))->saleLine)->accessories,
+                         ((Accessory *) getActual(accessories)));
+                return;
+            }
         }
-        registerUser->wallet = amount;
-        addNext(createSale(),)
+    }else if(strcmp("C-",sub)==0) {
+        goBack(registerUser->sales);
+        addNext(registerUser->sales,createSale());
+        for (int i = 0; i < cameras->size; ++i) {
+            goTo(cameras, i);
+            double amount = registerUser->wallet - ((Camera *) getActual(cameras))->product->retailPrice;
+            if(  strcmp(((Camera *) getActual(cameras))->product->code,code)==0 &&  amount > -1){
+                registerUser->wallet = amount;
+                goBack( ((SaleLine*) ((Sale*) getActual(registerUser->sales))->saleLine)->accessories);
+                addNext( ((SaleLine*) ((Sale*) getActual(registerUser->sales))->saleLine)->accessories,
+                         ((Camera *) getActual(cameras)));
+                return;
+            }
+        }
     }
     else{
-        printf("%s\n","Enough money in your wallet!");
+        printf("%s\n","Product not found or you have enough money in your wallet!");
     }
 
 }
 void increaseWallet(RegisterUser* registerUser, double amount){
     registerUser->wallet += amount;
 }
-//TODO
 void* freeRegisterUser(RegisterUser* registerUser){
+    for (int i = 0; i < registerUser->sales->size; ++i) {
+        freeSale( (Sale*) getActual(registerUser->sales));
+
+    }
+    freePersonShop(registerUser->personShop);
 }
