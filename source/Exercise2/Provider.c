@@ -10,7 +10,7 @@ Provider* createProvider(char* name, int dni, char* address, int phone, char* lo
     Provider* provider = malloc(sizeof(Provider));
     provider->personShop = createPersonShop(name, dni, address, phone, location, province, country, postCode);
 
-    provider->wallet=0;
+    provider->fax= (char *) phone;
     provider->manufacturers = createStaticList(5, sizeof(Manufacturer));
 
 }

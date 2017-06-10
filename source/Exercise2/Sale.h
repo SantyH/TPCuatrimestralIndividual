@@ -11,6 +11,8 @@ typedef struct Sale{
     long currentTime;
     char* dayCurrentTime;
     StaticList* saleLine;
+    double retailPriceTotal;
+    double discount;
 }Sale;
 
 Sale* createSale();

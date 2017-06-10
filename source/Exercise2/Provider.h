@@ -10,8 +10,9 @@
 #include "Manufacturer.h"
 
 typedef struct Provider{
+    char* CIF;
+    char* fax;
     PersonShop* personShop;
-    double wallet;
     StaticList* manufacturers;
 }Provider;
 

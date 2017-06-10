@@ -5,12 +5,15 @@
 #include <malloc.h>
 #include <memory.h>
 #include <stdio.h>
+#include <time.h>
 #include "Manufacturer.h"
 
 
 Manufacturer* createManufacturer(char* name, Camera* cameraSample, Accessory* accessorySample){
     Manufacturer* manufacturer = malloc(sizeof(Manufacturer));
     manufacturer->name=name;
+    srand ( time(NULL) );
+    manufacturer->code = (char *) rand();
     manufacturer->cameraSample = cameraSample;
     manufacturer->accessorySample = accessorySample;
 

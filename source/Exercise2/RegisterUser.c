@@ -35,6 +35,9 @@ void buyProduct(RegisterUser* registerUser, char* code, StaticList* accessories,
                 goBack( ((SaleLine*) ((Sale*) getActual(registerUser->sales))->saleLine)->accessories);
                 addNext( ((SaleLine*) ((Sale*) getActual(registerUser->sales))->saleLine)->accessories,
                          ((Accessory *) getActual(accessories)));
+
+                ((Sale*) getActual(registerUser->sales))->retailPriceTotal+= ((Accessory *) getActual(accessories))->product->retailPrice;
+                registerUser->wallet += ((Sale*) getActual(registerUser->sales))->retailPriceTotal * ((Sale*) getActual(registerUser->sales))->discount;
                 return;
             }
         }
@@ -49,6 +52,9 @@ void buyProduct(RegisterUser* registerUser, char* code, StaticList* accessories,
                 goBack( ((SaleLine*) ((Sale*) getActual(registerUser->sales))->saleLine)->accessories);
                 addNext( ((SaleLine*) ((Sale*) getActual(registerUser->sales))->saleLine)->accessories,
                          ((Camera *) getActual(cameras)));
+
+                ((Sale*) getActual(registerUser->sales))->retailPriceTotal+= ((Accessory *) getActual(accessories))->product->retailPrice;
+                registerUser->wallet += ((Sale*) getActual(registerUser->sales))->retailPriceTotal * ((Sale*) getActual(registerUser->sales))->discount;
                 return;
             }
         }

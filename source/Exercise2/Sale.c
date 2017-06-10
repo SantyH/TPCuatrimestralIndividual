@@ -11,6 +11,9 @@
 Sale* createSale(){
     Sale* sale = malloc(sizeof(Sale));
 
+    sale->retailPriceTotal=0;
+    sale->discount=0.05;
+
     time_t currentTime = time(NULL);
     sale->currentTime = currentTime;
 

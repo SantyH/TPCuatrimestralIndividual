@@ -220,7 +220,7 @@ void registerUserMain(RegisterUser *registerUser, StaticList* accessories,Static
                 }
                 for (int j = 0; j < accessories->size; ++j) {
                     goTo(accessories, j);
-                    showAccesory(((Accessory *) getActual(accessories)));
+                    showAccessory(((Accessory *) getActual(accessories)));
                 }
                 break;
             case 3:

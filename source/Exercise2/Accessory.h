@@ -14,6 +14,6 @@ typedef struct Accessory{
 }Accessory;
 
 Accessory* createAccessory(char* name, char* code, double retailPrice, char* type, char* comments);
-void showAccesory(Accessory* accessory);
+void showAccessory(Accessory *accessory);
 void freeAccessory(Accessory* accessory);
 #endif //TPCUATRIMESTRALINDIVIDUAL_ACCESSORY_H

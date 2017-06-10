@@ -20,7 +20,7 @@ void showProducts(SaleLine* saleLine){
     }
     for (int j = 0; j < saleLine->accessories->size; ++j) {
         goTo(saleLine->accessories,j);
-        showAccesory( (Accessory*)getActual(saleLine->accessories));
+        showAccessory((Accessory *) getActual(saleLine->accessories));
     }
 }
 void freeSaleLine(SaleLine* saleLine){

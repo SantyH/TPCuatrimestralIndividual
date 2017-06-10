@@ -11,6 +11,7 @@
 #define TPCUATRIMESTRALINDIVIDUAL_MANUFACTURER_H
 typedef struct Manufacturer{
     char* name;
+    char* code;
     Camera* cameraSample;
     Accessory* accessorySample;
 }Manufacturer;

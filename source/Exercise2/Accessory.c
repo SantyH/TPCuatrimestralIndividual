@@ -17,7 +17,7 @@ Accessory* createAccessory(char* name, char* code, double retailPrice, char* typ
     return accessory;
 }
 
-void showAccesory(Accessory* accessory){
+void showAccessory(Accessory *accessory){
     showInformation(accessory->product);
     printf("%s%s\n %s%s\n","Comments: ", accessory->comments,"Type: ", accessory->type);
 }
