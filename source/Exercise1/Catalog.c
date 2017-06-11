@@ -2,7 +2,8 @@
 // Created by Santiago Hazana on 6/7/17.
 //
 
-#include <opencl-c.h>
+#include <malloc.h>
+#include <stdio.h>
 #include "Catalog.h"
 
 Catalog* newCatalog(int id, char* name, int discount){

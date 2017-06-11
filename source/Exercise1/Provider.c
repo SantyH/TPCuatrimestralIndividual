@@ -3,7 +3,7 @@
 //
 
 #include <stdlib.h>
-#include <opencl-c.h>
+#include <stdio.h>
 #include "Provider.h"
 
 Provider* newProvider(char* name, char* description, char* direction, char* city, int phone, char* web){

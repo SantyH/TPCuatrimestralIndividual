@@ -2,7 +2,8 @@
 // Created by Santiago Hazana on 6/10/17.
 //
 
-#include <opencl-c.h>
+#include <malloc.h>
+#include <stdio.h>
 #include "Bag.h"
 #include "BagLine.h"
 

@@ -2,6 +2,7 @@
 // Created by Santiago Hazana on 6/10/17.
 //
 
+#include <malloc.h>
 #include "BagLine.h"
 
 BagLine* newBagLine(char* item, int quantity, double price){

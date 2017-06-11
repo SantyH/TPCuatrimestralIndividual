@@ -2,7 +2,8 @@
 // Created by Santiago Hazana on 6/7/17.
 //
 
-#include <opencl-c.h>
+
+#include <stdio.h>
 #include "Maker.h"
 #include "Provider.h"
 #include "Catalog.h"

@@ -2,6 +2,7 @@
 // Created by Santiago Hazana on 6/7/17.
 //
 
+#include <malloc.h>
 #include "Maker.h"
 
 Maker* newMaker(char* name, char* description, char* direction, char* city, int phone, char* web){

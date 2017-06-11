@@ -2,6 +2,7 @@
 // Created by Santiago Hazana on 6/7/17.
 //
 
+#include <malloc.h>
 #include "HouseElectro.h"
 
 HouseElectro* newElectro(int id, char* name, char* model, double price){
