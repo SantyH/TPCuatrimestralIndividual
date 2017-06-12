@@ -18,7 +18,7 @@ struct Catalog{
 
 Catalog* newCatalog(int id, char* name, int discount);
 void seeCatalog(StaticList* catalogList, Catalog* catalog);
-HouseElectro* addToBag(Catalog* catalog, StaticList* catalogList, int id);
+HouseElectro* searchForItem(Catalog *catalog, StaticList *catalogList, int id);
 void freeCatalog(Catalog* catalog);
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_CATALOG_H

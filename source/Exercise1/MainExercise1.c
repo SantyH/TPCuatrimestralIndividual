@@ -113,7 +113,7 @@ void user(Catalog* catalog, StaticList* makerProducts, StaticList* providerProdu
                 break;
             case 2:
                 printf("Enter item id to add to bag and quantity\n");
-                addItem(bag, addToBag(catalog, catalogList, scanInt()), scanInt());
+                addItem(bag, searchForItem(catalog, catalogList, scanInt()), scanInt());
                 break;
             case 3:
                 printf("Enter item name to delete\n");

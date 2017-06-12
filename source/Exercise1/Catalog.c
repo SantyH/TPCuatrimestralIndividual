@@ -29,7 +29,7 @@ void seeCatalog(StaticList* catalogList, Catalog* catalog){
     }
 }
 
-HouseElectro* addToBag(Catalog* catalog, StaticList* catalogList, int id){
+HouseElectro* searchForItem(Catalog *catalog, StaticList *catalogList, int id){
     for (int i = 0; i < catalogList->size; ++i) {
         goTo(catalogList, i);
         if (id == ((HouseElectro*)getActual(catalogList))->id)
