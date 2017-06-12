@@ -14,8 +14,8 @@ struct Magazine{
 };
 
 Magazine* newMagazine(char* type, int code, char* author, char* title, int year);
+void changeMagazineCode(Magazine *magazine, int code);
 void freeMagazine(Magazine* magazine);
-void changeMagazine(Magazine* magazine, int code);
 
 
 

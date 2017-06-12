@@ -24,3 +24,14 @@ void studentTakeMaterial(Student* student, Library* library ,int code){
 void studentLeaveMaterial(Student* student, Library* library){
     leaveMaterial(student->person, library);
 }
+
+void freeStudent(Student* student){
+    free(student->person->name);
+    free(student->person->personType);
+    free(student->person->surName);
+    free(student->person->email);
+    freeLoan(student->person->loan);
+    freeMaterial(student->person->material);
+    freePerson(student->person);
+    free(student);
+}

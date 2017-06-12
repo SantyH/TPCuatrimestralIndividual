@@ -24,8 +24,9 @@ struct Person{
     Loan* loan;
 };
 
-void newPerson(char* personType, char* name, char* surName, char* email, int phone, int enrollment);
+Person* newPerson(char* personType, char* name, char* surName, char* email, int phone, int enrollment);
 void takeMaterial(Person* person, Library* library, int code);
 void leaveMaterial(Person* person, Library* library);
+void freePerson(Person* person);
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_PERSON_H

@@ -16,5 +16,6 @@ struct Student{
 Student* newStudent(char* personType, char* name, char* surName, char* email, int phone, int enrollment);
 void studentTakeMaterial(Student* student, Library* library , int code);
 void studentLeaveMaterial(Student* student, Library* library);
+void freeStudent(Student* student);
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_STUDENT_H

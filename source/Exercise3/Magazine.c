@@ -21,6 +21,6 @@ void freeMagazine(Magazine* magazine){
     free(magazine);
 }
 
-void changeMagazine(Magazine* magazine, int code){
+void changeMagazineCode(Magazine *magazine, int code){
     magazine->material->code = code;
 }

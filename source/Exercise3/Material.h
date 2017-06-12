@@ -20,8 +20,8 @@ struct Material{
 };
 
 Material* newMaterial(char* type, int code, char* author, char* title, int year);
-void freeMaterial(Material* material);
 void changeMaterialCode(Material* material, int code);
+void freeMaterial(Material* material);
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_MATERIAL_H
 

@@ -8,7 +8,7 @@
 #include "Library.h"
 #include "Loan.h"
 
-void newPerson(char* personType, char* name, char* surName, char* email, int phone, int enrollment){
+Person* newPerson(char* personType, char* name, char* surName, char* email, int phone, int enrollment){
     Person* person = malloc(sizeof(Person));
     person->personType = personType;
     person->name = name;
@@ -16,6 +16,7 @@ void newPerson(char* personType, char* name, char* surName, char* email, int pho
     person->email = email;
     person->phone = phone;
     person->enrollment = enrollment;
+    return person;
 }
 
 
@@ -30,4 +31,14 @@ void leaveMaterial(Person* person, Library* library){
     person->material = NULL;
     person->toPay = 0;
     freeLoan(person->loan);
+}
+
+void freePerson(Person* person){
+    free(person->name);
+    free(person->personType);
+    free(person->surName);
+    free(person->email);
+    freeLoan(person->loan);
+    freeMaterial(person->material);
+    free(person);
 }

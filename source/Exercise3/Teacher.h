@@ -17,5 +17,6 @@ struct Teacher{
 Teacher* newTeacher(char* personType, char* name, char* surName, char* email, int phone, int enrollment);
 void teacherTakeMaterial(Teacher* teacher, Library* library ,int code);
 void teacherLeaveMaterial(Teacher* teacher, Library* library);
+void freeTeacher(Teacher* teacher);
 
 #endif //TPCUATRIMESTRALINDIVIDUAL_TEACHER_H
